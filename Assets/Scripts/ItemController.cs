@@ -12,7 +12,7 @@ public enum ItemState
 public class ItemController : MonoBehaviour
 {
     [SerializeField]
-    List<BoxCollider2D> tileColliders;
+    List<TileController> tileColliders;
 
     Vector2 moveDelta;
 
@@ -27,7 +27,7 @@ public class ItemController : MonoBehaviour
     {
         foreach(BoxCollider2D childCollider in transform.GetComponentsInChildren<BoxCollider2D>())
         {
-            tileColliders.Add(childCollider);
+            tileColliders.Add(childCollider.GetComponent<TileController>());
         }
     }
 
@@ -40,6 +40,11 @@ public class ItemController : MonoBehaviour
                 break;
             case ItemState.Dragging:
                 FollowMouse();
+
+                foreach(TileController tile in tileColliders)
+                {
+                    tile.OverTileCheck();
+                }
                 break;
             case ItemState.Placed:
                 break;
