@@ -71,10 +71,16 @@ public class ItemController : MonoBehaviour
     public void OnClick()
     {
         ChangeStateTo(ItemState.Dragging);
+
+        canvasSO.inventoryManager.activeItem = this;
     }
 
     public void OnRelease()
     {
+
+
+        canvasSO.inventoryManager.activeItem = null;
+
         //  Check if each tile is over a valid space
         foreach (TileController tile in tileColliders)
         {
@@ -127,5 +133,10 @@ public class ItemController : MonoBehaviour
     void SetPosition(Vector2 newPos)
     {
         rect.anchoredPosition = newPos;
+    }
+
+    public void AddRotation(float newRot)
+    {
+        rect.Rotate(0f, 0f, newRot);
     }
 }

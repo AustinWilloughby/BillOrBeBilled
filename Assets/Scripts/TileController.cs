@@ -99,7 +99,7 @@ public class TileController : MonoBehaviour
         }
 
 
-        Debug.Log(hitTileCount);
+        //Debug.Log(hitTileCount);
 
         if (hitTileCount == 2)
         {
