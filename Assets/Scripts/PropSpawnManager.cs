@@ -15,6 +15,8 @@ public class PropSpawnManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        inventorySO.spawnManager = this;
+
         for (int i = 0; i < spawnCount; i++)
         {
             SpawnItem(inventorySO.GetRandomItem().itemType);

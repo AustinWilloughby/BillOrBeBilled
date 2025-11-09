@@ -81,4 +81,14 @@ public class InventoryManager : MonoBehaviour
 
         gameObject.SetActive(true);
     }
+
+    private void OnDisable()
+    {
+        for(int i = 0; i < pickedUpRect.childCount; ++i)
+        {
+            ItemController missedItem = pickedUpRect.GetChild(i).GetComponent<ItemController>();
+
+            inventorySO.spawnManager.SpawnItem(missedItem.itemType);
+        }
+    }
 }
