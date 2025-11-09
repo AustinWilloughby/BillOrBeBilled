@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5310048305492625482}
   - component: {fileID: 4040393348531416676}
   - component: {fileID: 4180311023797017045}
+  - component: {fileID: 1977669702140339999}
   m_Layer: 0
   m_Name: Vehicle
   m_TagString: Untagged
@@ -281,6 +282,7 @@ MonoBehaviour:
   distInFront: 2.5
   distDown: 0
   pickupRadius: 2
+  inventorySO: {fileID: 11400000, guid: 1e2513df45fcd4543b15eb8a45f989ce, type: 2}
 --- !u!65 &4180311023797017045
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -302,6 +304,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1.5}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1977669702140339999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7343460081723091773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace02810ba2917c44b506ef7d0672969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropSpawnManager
+  inventorySO: {fileID: 11400000, guid: 1e2513df45fcd4543b15eb8a45f989ce, type: 2}
+  spawnOffset: 3
 --- !u!1 &8292114094432836678
 GameObject:
   m_ObjectHideFlags: 0

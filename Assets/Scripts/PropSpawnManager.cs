@@ -7,20 +7,12 @@ public class PropSpawnManager : MonoBehaviour
     InventorySO inventorySO;
 
     [SerializeField]
-    Terrain terrain;
-
-    [SerializeField]
-    int spawnCount;
+    float spawnOffset = 3f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         inventorySO.spawnManager = this;
-
-        for (int i = 0; i < spawnCount; i++)
-        {
-            SpawnItem(inventorySO.GetRandomItem().itemType);
-        }
     }
 
     // Update is called once per frame
@@ -31,6 +23,10 @@ public class PropSpawnManager : MonoBehaviour
 
     public void SpawnItem(ItemTypes itemType)
     {
-        GameObject newItem = Instantiate(inventorySO.GetItemDataByType(itemType).itemPropPrefab);
+        Vector3 playerPos = transform.position;
+
+        playerPos.y += spawnOffset;
+
+        GameObject newItem = Instantiate(inventorySO.GetItemDataByType(itemType).itemPropPrefab, playerPos, Quaternion.identity);
     }
 }
