@@ -749,6 +749,54 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1316191066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1316191068}
+  - component: {fileID: 1316191067}
+  m_Layer: 0
+  m_Name: EnergyManagement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1316191067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316191066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da1076e22dfe6f4883064b06acb5d33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Energy
+  maxBattery: 1000
+  currentBattery: 1000
+  baseLevelDrain: 0.1
+  drainPerSecond: 0.1
+--- !u!4 &1316191068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316191066}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.4021, y: 0.01831, z: 5.26727}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1404309705
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +924,7 @@ MonoBehaviour:
   rightWheelSpinner: {fileID: 1404309706}
   wheelRadius: 1
   maxSteerAngle: 70
+  energyCostScaler: 0.1
 --- !u!114 &1622770199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,3 +1150,4 @@ SceneRoots:
   - {fileID: 763755530}
   - {fileID: 1085239354}
   - {fileID: 1622770196}
+  - {fileID: 1316191068}

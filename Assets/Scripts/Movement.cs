@@ -28,6 +28,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float wheelRadius = 0.3f;
     [SerializeField] private float maxSteerAngle = 10f;
 
+    [Header("Energy Cost")]
+    [SerializeField] private float energyCostScaler = 0.1f;
+
     private Rigidbody rb;
     private Vector2 moveInput;
 
@@ -114,6 +117,8 @@ public class Movement : MonoBehaviour
         // Clamp to max speed
         leftWheelVelocity = Vector3.ClampMagnitude(leftWheelVelocity, maxSpeed);
         rightWheelVelocity = Vector3.ClampMagnitude(rightWheelVelocity, maxSpeed);
+
+        Energy.Instance.EffectBatteryCharge((leftWheelVelocity.magnitude + rightWheelVelocity.magnitude) * energyCostScaler);
     }
 
     private void UpdateRigidbody()
