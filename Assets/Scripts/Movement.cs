@@ -15,6 +15,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float hoverHeight = 0.5f;
     [SerializeField] private LayerMask groundLayer = -1;
 
+    [Header("Collision Detection")]
+    [SerializeField] private LayerMask wallLayers = -1;
+
     [Header("Lean Settings")]
     [SerializeField] private float maxLeanAngle = 15f;
     [SerializeField] private float leanSpeed = 5f;
@@ -47,6 +50,8 @@ public class Movement : MonoBehaviour
     private float rightWheelRotation;
     private Quaternion leftSuspensionBaseRotation;
     private Quaternion rightSuspensionBaseRotation;
+
+    private float stopDirection = 0;
 
     private void Awake()
     {
@@ -84,6 +89,8 @@ public class Movement : MonoBehaviour
         SimulateAxle();
         UpdateRigidbody();
         UpdateVisualWheels();
+
+        stopDirection = 0;
     }
 
     private void SimulateAxle()
@@ -117,6 +124,18 @@ public class Movement : MonoBehaviour
         // Clamp to max speed
         leftWheelVelocity = Vector3.ClampMagnitude(leftWheelVelocity, maxSpeed);
         rightWheelVelocity = Vector3.ClampMagnitude(rightWheelVelocity, maxSpeed);
+
+        if(stopDirection != 0)
+        {
+            if(Mathf.Sign(Vector3.Dot(leftWheelVelocity, transform.forward)) == Mathf.Sign(stopDirection))
+            {
+                leftWheelVelocity = Vector3.zero;
+            }
+            if (Mathf.Sign(Vector3.Dot(rightWheelVelocity, transform.forward)) == Mathf.Sign(stopDirection))
+            {
+                rightWheelVelocity = Vector3.zero;
+            }
+        }
 
         Energy.Instance.EffectBatteryCharge((leftWheelVelocity.magnitude + rightWheelVelocity.magnitude) * energyCostScaler);
     }
@@ -245,6 +264,15 @@ public class Movement : MonoBehaviour
 
             Vector3 rightEuler = rightSuspensionBaseRotation.eulerAngles;
             rightSuspension.localRotation = Quaternion.Euler(rightEuler.x, rightEuler.y - steerAmount, rightEuler.z);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if ((wallLayers.value & (1 << other.transform.gameObject.layer)) > 0)
+        {
+            Vector3 toTarget = other.transform.position - transform.position;
+            stopDirection = Vector3.Dot(toTarget, transform.forward);
         }
     }
 
