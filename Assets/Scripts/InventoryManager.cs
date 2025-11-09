@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -23,6 +24,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField]
     InventorySO inventorySO;
+
+    List<ItemController> storedItems;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -84,11 +87,50 @@ public class InventoryManager : MonoBehaviour
 
     private void OnDisable()
     {
+        //
+        //  Spawn any not stored items
+        //
         for(int i = 0; i < pickedUpRect.childCount; ++i)
         {
             ItemController missedItem = pickedUpRect.GetChild(i).GetComponent<ItemController>();
 
             inventorySO.spawnManager.SpawnItem(missedItem.itemType);
         }
+
+
+        //
+        //  Save Stored Items
+        //
+        storedItems.Clear();
+
+        for (int i = 0; i < heldItemsRect.childCount; ++i)
+        {
+            storedItems.Add(heldItemsRect.GetChild(i).GetComponent<ItemController>());
+        }
     }
+
+    public bool TradeItem(ItemTypes itemType)
+    {
+        ItemController foundItem = null;
+
+        foreach (ItemController item in storedItems)
+        {
+            if(item.itemType == itemType)
+            {
+                foundItem = item;
+
+                break;
+            }
+        }
+
+        if(foundItem != null)
+        {
+            storedItems.Remove(foundItem);
+
+            Destroy(foundItem.gameObject);
+
+            return true;
+        }
+
+        return false;
 }
