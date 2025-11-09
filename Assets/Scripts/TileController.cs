@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum TileState
@@ -10,14 +11,10 @@ public enum TileState
     OverInvalid
 }
 
-[RequireComponent(typeof(BoxCollider2D))]
 public class TileController : MonoBehaviour
 {
     [SerializeField]
     Image tileImage;
-
-    [SerializeField]
-    BoxCollider2D tileCollider;
 
     [SerializeField]
     bool isActive = true;
@@ -25,7 +22,13 @@ public class TileController : MonoBehaviour
     [SerializeField]
     TileState currentState;
 
-    List<Collider2D> overColliders = new List<Collider2D>();
+    List<RaycastResult> raycastResults = new List<RaycastResult>();
+
+    [SerializeField]
+    CanvasSO canvasSO;
+
+    [SerializeField]
+    int hitTileCount = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -60,18 +63,28 @@ public class TileController : MonoBehaviour
     void SetStateTo(bool value)
     {
         tileImage.enabled = value;
-
-        tileCollider.enabled = value;
     }
 
     public void OverTileCheck()
     {
-        Physics2D.OverlapPoint(transform.position, ContactFilter2D.noFilter, overColliders);
-        //overColliders = Physics2D.OverlapPointAll(transform.position);
+        PointerEventData pointerEvent = new PointerEventData(EventSystem.current);
 
-        Debug.Log(overColliders.Count);
+        pointerEvent.position = transform.position;
 
-        if (overColliders.Count > 1)
+        canvasSO.raycaster.Raycast(pointerEvent, raycastResults);
+
+        Debug.Log(raycastResults.Count);
+
+        hitTileCount = 0;
+        foreach(RaycastResult result in raycastResults)
+        {
+            if(result.gameObject.CompareTag("Tile"))
+            {
+                ++hitTileCount;
+            }
+        }
+
+        if (hitTileCount > 1)
         {
             currentState = TileState.OverValid;
         }
@@ -79,5 +92,7 @@ public class TileController : MonoBehaviour
         {
             currentState = TileState.OverInvalid;
         }
+
+        raycastResults.Clear();
     }    
 }

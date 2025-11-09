@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5606843178006199511}
   m_Layer: 5
   m_Name: Tile - Image
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,5 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileController
   tileImage: {fileID: 3873987087979465260}
-  tileCollider: {fileID: 8232906000465921914}
   isActive: 1
+  currentState: 0
+  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  hitTileCount: 0
