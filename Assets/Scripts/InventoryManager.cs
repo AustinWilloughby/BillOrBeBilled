@@ -25,7 +25,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     InventorySO inventorySO;
 
-    List<ItemController> storedItems;
+    List<ItemController> storedItems = new List<ItemController>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
