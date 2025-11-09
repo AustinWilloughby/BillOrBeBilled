@@ -115,7 +115,7 @@ public class InventoryManager : MonoBehaviour
 
         foreach (ItemController item in storedItems)
         {
-            if(item.itemType == itemType)
+            if (item.itemType == itemType)
             {
                 foundItem = item;
 
@@ -123,7 +123,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        if(foundItem != null)
+        if (foundItem != null)
         {
             storedItems.Remove(foundItem);
 
@@ -133,4 +133,5 @@ public class InventoryManager : MonoBehaviour
         }
 
         return false;
+    }
 }
