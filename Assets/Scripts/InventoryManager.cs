@@ -95,6 +95,8 @@ public class InventoryManager : MonoBehaviour
             ItemController missedItem = pickedUpRect.GetChild(i).GetComponent<ItemController>();
 
             inventorySO.spawnManager.SpawnItem(missedItem.itemType);
+
+            Destroy(missedItem.gameObject);
         }
 
 
