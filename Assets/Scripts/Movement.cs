@@ -77,6 +77,14 @@ public class Movement : MonoBehaviour
             rightSuspensionBaseRotation = rightSuspension.localRotation;
     }
 
+    private void Update()
+    {
+        if (Energy.Instance.CurrentBattery <= 0)
+        {
+            Energy.Instance.gameOverScreen.SetActive(true);
+        }
+    }
+
     public void OnMove(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();

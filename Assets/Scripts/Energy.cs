@@ -11,6 +11,8 @@ public class Energy : MonoBehaviour
     [SerializeField] float baseLevelDrain = 0.1f;
     [SerializeField] float drainPerSecond = 0.1f;
 
+    public GameObject gameOverScreen;
+
 
     public float CurrentBattery { get { return currentBattery; } }
     public float MaxBattery { get { return maxBattery; } set { maxBattery = value; } }
