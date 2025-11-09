@@ -114,6 +114,8 @@ public class ItemController : MonoBehaviour
             case ItemState.None:
                 rect.SetParent(canvasSO.inventoryManager.pickedUpRect);
 
+                rect.rotation = Quaternion.identity;
+
                 ResetAllTiles();
                 break;
             case ItemState.Placed:
@@ -150,29 +152,54 @@ public class ItemController : MonoBehaviour
     {
         Vector2 snapCenter = tileCenter;
 
-        if(transform.rotation.eulerAngles.z % 180 == 0)
+        Debug.Log(transform.rotation.eulerAngles.z);
+        switch(transform.rotation.eulerAngles.z)
         {
-            if (itemTileSize.x % 2 == 0)
-            {
-                snapCenter.x -= 32f * canvasSO.canvasRect.localScale.x;
-            }
+            case 90f:
+                if (itemTileSize.y % 2 == 0)
+                {
+                    snapCenter.x -= 32f * canvasSO.canvasRect.localScale.x;
+                }
 
-            if (itemTileSize.y % 2 == 0)
-            {
-                snapCenter.y -= 32f * canvasSO.canvasRect.localScale.y;
-            }
-        }
-        else
-        {
-            if (itemTileSize.y % 2 == 0)
-            {
-                snapCenter.x -= 32f * canvasSO.canvasRect.localScale.x;
-            }
+                if (itemTileSize.x % 2 == 0)
+                {
+                    snapCenter.y -= 32f * canvasSO.canvasRect.localScale.y;
+                }
+                break;
+            case 180f:
+                if (itemTileSize.x % 2 == 0)
+                {
+                    snapCenter.x += 32f * canvasSO.canvasRect.localScale.x;
+                }
 
-            if (itemTileSize.x % 2 == 0)
-            {
-                snapCenter.y -= 32f * canvasSO.canvasRect.localScale.y;
-            }
+                if (itemTileSize.y % 2 == 0)
+                {
+                    snapCenter.y -= 32f * canvasSO.canvasRect.localScale.y;
+                }
+                break;
+            case 270f:
+            case -90f:
+                if (itemTileSize.y % 2 == 0)
+                {
+                    snapCenter.x += 32f * canvasSO.canvasRect.localScale.x;
+                }
+
+                if (itemTileSize.x % 2 == 0)
+                {
+                    snapCenter.y += 32f * canvasSO.canvasRect.localScale.y;
+                }
+                break;
+            case 0:
+                if (itemTileSize.x % 2 == 0)
+                {
+                    snapCenter.x -= 32f * canvasSO.canvasRect.localScale.x;
+                }
+
+                if (itemTileSize.y % 2 == 0)
+                {
+                    snapCenter.y += 32f * canvasSO.canvasRect.localScale.y;
+                }
+                break;
         }
 
         return snapCenter;
