@@ -801,7 +801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RandomItemSpawner
   inventorySO: {fileID: 11400000, guid: 1e2513df45fcd4543b15eb8a45f989ce, type: 2}
   worldBounds: {x: 400, y: 400}
-  numItems: 0
+  numItems: 200
 --- !u!4 &385882861
 Transform:
   m_ObjectHideFlags: 0
