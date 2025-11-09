@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d83ab4ea472149478228357d2fc13f3, type: 3}
+  m_Name: GyrosData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  itemPropPrefab: {fileID: 5034151857136442010, guid: 075549d03d1424f40a4ca7b27b463d6d, type: 3}
+  itemUIPrefab: {fileID: 6399425211024176051, guid: 3e964dcec5213844fad3a0c08b1d7150, type: 3}
+  itemType: 5
+  itemSellValue: 20
+  itemEnergyCost: 0
+  itemTexture: {fileID: 2800000, guid: 618910a8d30c9bd47849450406cc6be7, type: 3}

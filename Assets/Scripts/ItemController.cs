@@ -26,9 +26,6 @@ public class ItemController : MonoBehaviour
     CanvasSO canvasSO;
 
     [SerializeField]
-    GameObject propGO;
-
-    [SerializeField]
     Vector2 itemTileSize;
 
     [SerializeField]

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d83ab4ea472149478228357d2fc13f3, type: 3}
+  m_Name: ContainerData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  itemPropPrefab: {fileID: 5588843932025998718, guid: 3cf213ae84b2e69418b5c26d82b6dfb1, type: 3}
+  itemUIPrefab: {fileID: 6327932924130299210, guid: c0e23e57dc1b38f49a2d6eeb269e0170, type: 3}
+  itemType: 1
+  itemSellValue: 15
+  itemEnergyCost: 0
+  itemTexture: {fileID: 2800000, guid: 2aceeafdc40c7b841b889790fccc7585, type: 3}

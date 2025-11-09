@@ -13,5 +13,17 @@ MonoBehaviour:
   m_Name: InventoryData
   m_EditorClassIdentifier: Assembly-CSharp::InventorySO
   items:
+  - {fileID: 11400000, guid: c36dbb859d6ea6e4ebdaa1cac74adb9c, type: 2}
+  - {fileID: 11400000, guid: cda067c11f48f594897288d31b5111ff, type: 2}
   - {fileID: 11400000, guid: 60c5f8a27eb8c1f48aedef493b041793, type: 2}
+  - {fileID: 11400000, guid: da10d88399ffc2740947d8f758b96db3, type: 2}
+  - {fileID: 11400000, guid: fc805264178b7b9419a8ed41a3da03c1, type: 2}
+  - {fileID: 11400000, guid: 2af3ef50de44cca4cb0b95507442a78d, type: 2}
+  - {fileID: 11400000, guid: 34c9a75a2ba6428498868dd6caa7eec1, type: 2}
+  - {fileID: 11400000, guid: 7fd05a58f2a973c4ba5843502a6f562f, type: 2}
+  - {fileID: 11400000, guid: 559267af3b420fb46944481ecf699863, type: 2}
+  - {fileID: 11400000, guid: d5ada0d7d43eb2f4ab817fd0275bffaa, type: 2}
+  - {fileID: 11400000, guid: 4e8bf6708e8b96646b3e0e23f2183600, type: 2}
+  - {fileID: 11400000, guid: 916ea47ddb4a2a443a638e28c0da50dc, type: 2}
   uiInventoryManager: {fileID: 0}
+  spawnManager: {fileID: 0}
