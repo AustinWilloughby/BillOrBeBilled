@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class Movement : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform rightWheelSpinner;
     [SerializeField] private float wheelRadius = 0.3f;
     [SerializeField] private float maxSteerAngle = 10f;
+    [SerializeField] private VisualEffect leftWheelVFX;
+    [SerializeField] private VisualEffect rightWheelVFX;
+
 
     [Header("Energy Cost")]
     [SerializeField] private float energyCostScaler = 0.1f;
@@ -133,7 +137,10 @@ public class Movement : MonoBehaviour
         leftWheelVelocity = Vector3.ClampMagnitude(leftWheelVelocity, maxSpeed);
         rightWheelVelocity = Vector3.ClampMagnitude(rightWheelVelocity, maxSpeed);
 
-        if(stopDirection != 0)
+        leftWheelVFX.enabled = leftWheelVelocity.magnitude > 0.5f;
+        rightWheelVFX.enabled = rightWheelVelocity.magnitude > 0.5f;
+
+        if (stopDirection != 0)
         {
             if(Mathf.Sign(Vector3.Dot(leftWheelVelocity, transform.forward)) == Mathf.Sign(stopDirection))
             {
