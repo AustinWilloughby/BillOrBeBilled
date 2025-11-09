@@ -15,5 +15,6 @@ MonoBehaviour:
   itemPropPrefab: {fileID: 7351130030380672614, guid: 50a069168b1feaa4e9f0b9d3a54ae288, type: 3}
   itemUIPrefab: {fileID: 182185690430725854, guid: 045d9516247aec24fa2088bedb951262, type: 3}
   itemType: 2
-  itemSellValue: 0
-  itemEnergyCost: 0
+  itemSellValue: 10
+  itemEnergyCost: 0.1
+  itemTexture: {fileID: 2800000, guid: 0610b38d190aa3b40940851b3091e80b, type: 3}

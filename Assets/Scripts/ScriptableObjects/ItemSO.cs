@@ -13,4 +13,6 @@ public class ItemSO : ScriptableObject
     public float itemSellValue;
 
     public float itemEnergyCost;
+
+    public Texture itemTexture;
 }
