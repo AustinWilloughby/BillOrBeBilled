@@ -12,18 +12,22 @@ public class InventoryManager : MonoBehaviour
     Canvas canvas;
 
     [SerializeField]
+    CanvasScaler canvasScaler;
+
+    [SerializeField]
     GraphicRaycaster raycaster;
 
-    public RectTransform rect, pickedUpRect, storageRect, heldItemsRect;
+    public RectTransform rect, pickedUpRect, storageRect, heldItemsRect, canvasRect;
 
     public ItemController activeItem;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canvasSO.canvas = canvas;
-
+        canvasSO.canvasRect = canvasRect;
         canvasSO.raycaster = raycaster;
+
+        canvasSO.canvasScaler = canvasScaler;
 
         canvasSO.inventoryManager = this;
     }

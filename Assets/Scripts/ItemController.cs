@@ -25,6 +25,12 @@ public class ItemController : MonoBehaviour
     [SerializeField]
     CanvasSO canvasSO;
 
+    [SerializeField]
+    GameObject propGO;
+
+    [SerializeField]
+    Vector2 itemTileSize;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,6 +66,8 @@ public class ItemController : MonoBehaviour
         //  Check if player would move outside the bounds
         Vector2 newPos = Mouse.current.position.ReadValue();
 
+        //newPos /= canvasSO.canvasRect.localScale;
+
         SetPosition(newPos);
     }
 
@@ -77,8 +85,6 @@ public class ItemController : MonoBehaviour
 
     public void OnRelease()
     {
-
-
         canvasSO.inventoryManager.activeItem = null;
 
         //  Check if each tile is over a valid space
@@ -113,7 +119,7 @@ public class ItemController : MonoBehaviour
             case ItemState.Placed:
                 rect.SetParent(canvasSO.inventoryManager.heldItemsRect);
 
-                SetPosition(tileColliders[0].GetSnapToPosition());
+                SetPosition(GetSnappedCenterPos(tileColliders[0].GetSnapToPosition()));
 
                 //ResetAllTiles();
                 break;
@@ -132,11 +138,43 @@ public class ItemController : MonoBehaviour
 
     void SetPosition(Vector2 newPos)
     {
-        rect.anchoredPosition = newPos;
+        rect.anchoredPosition = newPos / canvasSO.canvasRect.localScale;
     }
 
     public void AddRotation(float newRot)
     {
         rect.Rotate(0f, 0f, newRot);
+    }
+
+    Vector2 GetSnappedCenterPos(Vector2 tileCenter)
+    {
+        Vector2 snapCenter = tileCenter;
+
+        if(transform.rotation.eulerAngles.z % 180 == 0)
+        {
+            if (itemTileSize.x % 2 == 0)
+            {
+                snapCenter.x -= 32f * canvasSO.canvasRect.localScale.x;
+            }
+
+            if (itemTileSize.y % 2 == 0)
+            {
+                snapCenter.y -= 32f * canvasSO.canvasRect.localScale.y;
+            }
+        }
+        else
+        {
+            if (itemTileSize.y % 2 == 0)
+            {
+                snapCenter.x -= 32f * canvasSO.canvasRect.localScale.x;
+            }
+
+            if (itemTileSize.x % 2 == 0)
+            {
+                snapCenter.y -= 32f * canvasSO.canvasRect.localScale.y;
+            }
+        }
+
+        return snapCenter;
     }
 }

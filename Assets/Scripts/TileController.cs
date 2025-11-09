@@ -37,10 +37,18 @@ public class TileController : MonoBehaviour
 
     Vector2 snapPosition = Vector2.zero;
 
+    [SerializeField]
+    Color normalColor, validColor, invalidColor;
+    Color normalGrayColor, validGrayColor, invalidGrayColor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        normalGrayColor = new Color(normalColor.grayscale, normalColor.grayscale, normalColor.grayscale, normalColor.a);
+
+        validGrayColor = new Color(validColor.grayscale, validColor.grayscale, validColor.grayscale, validColor.a);
+
+        invalidGrayColor = new Color(invalidColor.grayscale, invalidColor.grayscale, invalidColor.grayscale, invalidColor.a);
     }
 
     // Update is called once per frame
@@ -51,13 +59,13 @@ public class TileController : MonoBehaviour
         switch (currentState)
         {
             case TileState.None:
-                tileImage.color = Color.white;
+                tileImage.color = normalGrayColor;
                 break;
             case TileState.OverValid:
-                tileImage.color = Color.green;
+                tileImage.color = validGrayColor;
                 break;
             case TileState.OverInvalid:
-                tileImage.color = Color.red;
+                tileImage.color = invalidGrayColor;
                 break;
         }
     }

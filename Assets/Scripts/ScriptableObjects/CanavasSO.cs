@@ -6,7 +6,8 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/CanvasScriptableObject", order = 1)]
 public class CanvasSO : ScriptableObject
 {
-    public Canvas canvas;
+    public RectTransform canvasRect;
+    public CanvasScaler canvasScaler;
 
     public GraphicRaycaster raycaster;
 
