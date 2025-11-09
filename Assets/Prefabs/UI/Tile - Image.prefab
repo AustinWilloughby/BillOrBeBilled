@@ -140,6 +140,6 @@ MonoBehaviour:
   currentState: 0
   canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
   hitTileCount: 0
-  normalColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+  normalColor: {r: 1, g: 1, b: 1, a: 0.5686275}
   validColor: {r: 0, g: 1, b: 0.0119121075, a: 0.39215687}
   invalidColor: {r: 1, g: 0, b: 0, a: 0.39215687}
