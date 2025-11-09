@@ -8,8 +8,6 @@ public class CameraFollow : MonoBehaviour
 
     [Header("Follow Settings")]
     [SerializeField] private Vector3 offset = new Vector3(0f, 2.5f, -7f);
-    [SerializeField] private float followSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 5f;
 
     [Header("Look Settings")]
     [SerializeField] private Vector3 lookAtOffset = new Vector3(0f, 0f, 5f);
@@ -17,7 +15,6 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float lookAheadSpeed = 2f;
 
     [Header("Smoothing")]
-    [SerializeField] private bool useDOTween = true;
     [SerializeField] private float tweenDuration = 0.3f;
     [SerializeField] private Ease tweenEase = Ease.OutQuad;
 
@@ -35,34 +32,36 @@ public class CameraFollow : MonoBehaviour
         // Calculate base look-at point with configurable offset (in target's local space)
         Vector3 baseLookAtPoint = targetRigidbody.position + targetRigidbody.rotation * lookAtOffset;
 
-        // Add velocity-based look-ahead
-        Vector3 targetLookAhead = targetRigidbody.linearVelocity.normalized * lookAheadDistance;
-        currentLookAhead = Vector3.Lerp(currentLookAhead, targetLookAhead, lookAheadSpeed * Time.deltaTime);
+        // Add velocity-based look-ahead (only if moving)
+        if (targetRigidbody.linearVelocity.sqrMagnitude > 0.01f) // Check if actually moving
+        {
+            Vector3 targetLookAhead = targetRigidbody.linearVelocity.normalized * lookAheadDistance;
+            currentLookAhead = Vector3.Lerp(currentLookAhead, targetLookAhead, lookAheadSpeed * Time.deltaTime);
+        }
+        // When stopped, keep the current look-ahead (don't lerp back to zero)
 
         // Combine base look-at with velocity look-ahead
         Vector3 lookAtPoint = baseLookAtPoint + currentLookAhead;
         Vector3 directionToTarget = lookAtPoint - targetPosition;
+
+        // Ensure we have a valid direction
+        if (directionToTarget.sqrMagnitude < 0.001f)
+        {
+            directionToTarget = targetRigidbody.rotation * Vector3.forward;
+        }
+
         Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
         // Remove Z-axis rotation (roll)
         Vector3 euler = targetRotation.eulerAngles;
         targetRotation = Quaternion.Euler(euler.x, euler.y, 0f);
 
-        if (useDOTween)
-        {
-            // Kill and restart tweens each frame for smooth following
-            positionTween?.Kill();
-            rotationTween?.Kill();
+        // Kill and restart tweens each frame for smooth following
+        positionTween?.Kill();
+        rotationTween?.Kill();
 
-            positionTween = transform.DOMove(targetPosition, tweenDuration).SetEase(tweenEase);
-            rotationTween = transform.DORotateQuaternion(targetRotation, tweenDuration).SetEase(tweenEase);
-        }
-        else
-        {
-            // Use standard Lerp/Slerp
-            transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
+        positionTween = transform.DOMove(targetPosition, tweenDuration).SetEase(tweenEase);
+        rotationTween = transform.DORotateQuaternion(targetRotation, tweenDuration).SetEase(tweenEase);
     }
 
     private void OnDestroy()

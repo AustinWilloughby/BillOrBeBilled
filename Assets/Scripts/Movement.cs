@@ -20,6 +20,14 @@ public class Movement : MonoBehaviour
     [SerializeField] private float leanSpeed = 5f;
     [SerializeField] private float terrainAlignmentSpeed = 5f;
 
+    [Header("Visual Wheels")]
+    [SerializeField] private Transform leftSuspension;
+    [SerializeField] private Transform leftWheelSpinner;
+    [SerializeField] private Transform rightSuspension;
+    [SerializeField] private Transform rightWheelSpinner;
+    [SerializeField] private float wheelRadius = 0.3f;
+    [SerializeField] private float maxSteerAngle = 10f;
+
     private Rigidbody rb;
     private Vector2 moveInput;
 
@@ -30,6 +38,12 @@ public class Movement : MonoBehaviour
     // Lean tracking
     private float currentLeanAngle;
     private Quaternion currentSurfaceRotation;
+
+    // Wheel rotation tracking
+    private float leftWheelRotation;
+    private float rightWheelRotation;
+    private Quaternion leftSuspensionBaseRotation;
+    private Quaternion rightSuspensionBaseRotation;
 
     private void Awake()
     {
@@ -47,6 +61,12 @@ public class Movement : MonoBehaviour
 
         // Initialize surface rotation to identity (flat ground)
         currentSurfaceRotation = Quaternion.identity;
+
+        // Store base suspension rotations to preserve X and Z
+        if (leftSuspension != null)
+            leftSuspensionBaseRotation = leftSuspension.localRotation;
+        if (rightSuspension != null)
+            rightSuspensionBaseRotation = rightSuspension.localRotation;
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -60,6 +80,7 @@ public class Movement : MonoBehaviour
 
         SimulateAxle();
         UpdateRigidbody();
+        UpdateVisualWheels();
     }
 
     private void SimulateAxle()
@@ -178,6 +199,48 @@ public class Movement : MonoBehaviour
         // Apply to rigidbody
         rb.MovePosition(newPosition);
         rb.MoveRotation(finalRotation);
+    }
+
+    private void UpdateVisualWheels()
+    {
+        if (leftWheelSpinner == null || rightWheelSpinner == null) return;
+
+        // Calculate wheel spin based on velocity
+        // Distance traveled = velocity * time, rotation = distance / circumference * 360
+        float circumference = 2f * Mathf.PI * wheelRadius;
+
+        // Get the signed speed (positive forward, negative backward)
+        float leftSpeed = Vector3.Dot(leftWheelVelocity, transform.forward);
+        float rightSpeed = Vector3.Dot(rightWheelVelocity, transform.forward);
+
+        float leftDistance = leftSpeed * Time.fixedDeltaTime;
+        float rightDistance = rightSpeed * Time.fixedDeltaTime;
+
+        float leftRotationDelta = (leftDistance / circumference) * 360f;
+        float rightRotationDelta = (rightDistance / circumference) * 360f;
+
+        leftWheelRotation += leftRotationDelta;
+        rightWheelRotation += rightRotationDelta;
+
+        // Apply wheel spin rotation
+        leftWheelSpinner.localRotation = Quaternion.Euler(leftWheelRotation, 0f, 0f);
+        rightWheelSpinner.localRotation = Quaternion.Euler(rightWheelRotation, 0f, 0f);
+
+        // Calculate steering deflection based on differential velocity
+        if (leftSuspension != null && rightSuspension != null)
+        {
+            float speedDiff = leftSpeed - rightSpeed;
+
+            // Normalize by max speed and apply steering angle
+            float steerAmount = Mathf.Abs(Mathf.Clamp(speedDiff / maxSpeed, -0.5f, 1f) * maxSteerAngle);
+
+            // Apply only Y rotation, preserving base X and Z rotations
+            Vector3 leftEuler = leftSuspensionBaseRotation.eulerAngles;
+            leftSuspension.localRotation = Quaternion.Euler(leftEuler.x, leftEuler.y + steerAmount, leftEuler.z);
+
+            Vector3 rightEuler = rightSuspensionBaseRotation.eulerAngles;
+            rightSuspension.localRotation = Quaternion.Euler(rightEuler.x, rightEuler.y - steerAmount, rightEuler.z);
+        }
     }
 
     // Visualize the axle and ground detection in the editor
