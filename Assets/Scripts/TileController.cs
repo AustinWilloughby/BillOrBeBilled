@@ -83,7 +83,6 @@ public class TileController : MonoBehaviour
 
         canvasSO.raycaster.Raycast(pointerEvent, raycastResults);
 
-        Debug.Log(raycastResults.Count);
 
         hitTileCount = 0;
         foreach (RaycastResult result in raycastResults)
@@ -99,7 +98,10 @@ public class TileController : MonoBehaviour
             }
         }
 
-        if (hitTileCount > 1)
+
+        Debug.Log(hitTileCount);
+
+        if (hitTileCount == 2)
         {
             currentState = TileState.OverValid;
         }
