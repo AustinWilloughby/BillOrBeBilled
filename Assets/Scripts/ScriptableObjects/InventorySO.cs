@@ -5,16 +5,16 @@ public enum ItemTypes
 {
     Cone,
     Container,
-    FanBlades,
-    Gears,
+    Fan,
+    Gear,
     Gem,
-    Gyros,
-    MontherBoard,
+    Gyro,
+    Montherboard,
     Rock,
     Scrap,
-    Spheres,
+    Sphere,
     Sword,
-    TireItron
+    Tube
 }
 
 // Use the CreateAssetMenu attribute to allow creating instances of this ScriptableObject from the Unity Editor.

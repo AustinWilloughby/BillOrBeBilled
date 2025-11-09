@@ -48,7 +48,7 @@ public class TaskGiver : MonoBehaviour
     { 
         currentItem = inventorySO.GetRandomItem();
         text.text = starterPhrases[Random.Range(0, starterPhrases.Length - 1)]
-            + " " + currentItem.name + "!";
+            + " " + currentItem.itemType.ToString() + "!";
         DisplayImage(currentItem.itemTexture);
     }
 
