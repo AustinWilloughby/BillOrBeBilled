@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 4579824395257653075}
   - component: {fileID: 7383112461874764096}
   - component: {fileID: 1146772906524568065}
+  - component: {fileID: -705529017480775694}
   m_Layer: 6
   m_Name: Prop_Spheres
   m_TagString: Untagged
@@ -284,6 +285,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-705529017480775694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3802479173187960297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a045417dc94b3be46afd599b4e846d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropItemData
+  itemType: 9
 --- !u!1 &4845219423068739415
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,9 @@ public class ItemController : MonoBehaviour
     [SerializeField]
     Vector2 itemTileSize;
 
+    [SerializeField]
+    InventorySO inventorySO;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -99,6 +102,8 @@ public class ItemController : MonoBehaviour
 
         //  All tiles are over a valid space
         ChangeStateTo(ItemState.Placed);
+
+        
     }
 
     void ChangeStateTo(ItemState newState)
@@ -152,7 +157,7 @@ public class ItemController : MonoBehaviour
     {
         Vector2 snapCenter = tileCenter;
 
-        Debug.Log(transform.rotation.eulerAngles.z);
+        //Debug.Log(transform.rotation.eulerAngles.z);
         switch(transform.rotation.eulerAngles.z)
         {
             case 90f:

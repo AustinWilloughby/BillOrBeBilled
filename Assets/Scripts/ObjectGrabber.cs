@@ -10,6 +10,9 @@ public class ObjectGrabber : MonoBehaviour
 
     Collider[] pickupsInFront;
 
+    [SerializeField]
+    InventorySO inventorySO;
+
     private void FixedUpdate()
     {
         Vector3 position = transform.position + (transform.forward * distInFront);
@@ -24,7 +27,11 @@ public class ObjectGrabber : MonoBehaviour
             foreach(Collider c in pickupsInFront)
             {
                 //TODO: Add to inventory
-                Destroy(c.gameObject);
+                inventorySO.uiInventoryManager.PickupItemOfType(c.transform.root.GetComponent<PropItemData>().itemType);
+
+
+
+                Destroy(c.transform.root.gameObject);
             }
         }
     }

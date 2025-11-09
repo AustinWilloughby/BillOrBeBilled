@@ -21,8 +21,11 @@ public class InventoryManager : MonoBehaviour
 
     public ItemController activeItem;
 
+    [SerializeField]
+    InventorySO inventorySO;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         canvasSO.canvasRect = canvasRect;
         canvasSO.raycaster = raycaster;
@@ -30,6 +33,8 @@ public class InventoryManager : MonoBehaviour
         canvasSO.canvasScaler = canvasScaler;
 
         canvasSO.inventoryManager = this;
+
+        inventorySO.uiInventoryManager = this;
     }
 
     // Update is called once per frame
@@ -42,6 +47,11 @@ public class InventoryManager : MonoBehaviour
 
     public void OnRotate(InputAction.CallbackContext context)
     {
+        if(activeItem == null)
+        {
+            return;
+        }
+
         if (context.performed)
         {
             Vector2 playerInput = context.ReadValue<Vector2>();
@@ -61,5 +71,14 @@ public class InventoryManager : MonoBehaviour
 
             activeItem.AddRotation(newRot);
         }
+    }
+
+    public void PickupItemOfType(ItemTypes itemType)
+    {
+        RectTransform newItem = Instantiate(inventorySO.GetItemDataByType(itemType).itemUIPrefab);
+
+        newItem.SetParent(pickedUpRect);
+
+        gameObject.SetActive(true);
     }
 }

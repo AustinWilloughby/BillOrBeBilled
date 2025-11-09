@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9008476478024992691}
   - component: {fileID: 4249048650470666992}
   - component: {fileID: 2489387197060759617}
+  - component: {fileID: 8754494002561413962}
   m_Layer: 6
   m_Name: Prop_FanBlades
   m_TagString: Untagged
@@ -139,3 +140,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8754494002561413962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351130030380672614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a045417dc94b3be46afd599b4e846d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropItemData
+  itemType: 2
