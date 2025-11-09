@@ -10,7 +10,7 @@ public class Vehicle : MonoBehaviour
     [SerializeField] float torque = 500f;
     [SerializeField] float downforceCoef = 0.05f;
     [SerializeField] float maxSpeed = 10.0f;
-    [SerializeField] float differential = 20.0f;
+    [SerializeField] float stationaryTurnMultiplier = 20.0f;
 
     [SerializeField] Wheel[] wheels;
 
@@ -34,14 +34,15 @@ public class Vehicle : MonoBehaviour
             wheel.UpdatePosition();
         }
 
+        //Make it so that the else statement only fires IF they aren't moving forward at all
         supportWheel.Steer(movementInput.x, rb.linearVelocity.magnitude, maxSpeed);
-        if (Mathf.Abs(movementInput.y) > Mathf.Abs(movementInput.x) * 0.8f)
+        if (Mathf.Abs(movementInput.y) >= Mathf.Abs(movementInput.x) * 0.8f || rb.linearVelocity.magnitude > 0.5f)
         {
-            supportWheel.Accelerate(movementInput.y * power);
-        } 
+            supportWheel.Accelerate(movementInput.y * power * (1.0f - Mathf.Abs(movementInput.x)));
+        }
         else
         {
-            supportWheel.Accelerate(Mathf.Abs(movementInput.x) * power);
+            supportWheel.Accelerate(Mathf.Abs(movementInput.x) * power * stationaryTurnMultiplier);
         }
         supportWheel.UpdatePosition();
 
