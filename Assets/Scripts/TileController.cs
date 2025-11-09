@@ -22,6 +22,11 @@ public class TileController : MonoBehaviour
     [SerializeField]
     TileState currentState;
 
+    public TileState State
+    {
+        get { return currentState; }
+    }
+
     List<RaycastResult> raycastResults = new List<RaycastResult>();
 
     [SerializeField]
@@ -29,6 +34,8 @@ public class TileController : MonoBehaviour
 
     [SerializeField]
     int hitTileCount = 0;
+
+    Vector2 snapPosition = Vector2.zero;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -67,6 +74,9 @@ public class TileController : MonoBehaviour
 
     public void OverTileCheck()
     {
+        //  Reset Snap Position
+        snapPosition = Vector2.zero;
+
         PointerEventData pointerEvent = new PointerEventData(EventSystem.current);
 
         pointerEvent.position = transform.position;
@@ -76,11 +86,16 @@ public class TileController : MonoBehaviour
         Debug.Log(raycastResults.Count);
 
         hitTileCount = 0;
-        foreach(RaycastResult result in raycastResults)
+        foreach (RaycastResult result in raycastResults)
         {
-            if(result.gameObject.CompareTag("Tile"))
+            if (result.gameObject.CompareTag("Tile"))
             {
                 ++hitTileCount;
+            }
+
+            if(result.gameObject.name.Contains("Storage - Tile"))
+            {
+                snapPosition = result.gameObject.transform.position;
             }
         }
 
@@ -94,5 +109,15 @@ public class TileController : MonoBehaviour
         }
 
         raycastResults.Clear();
-    }    
+    }
+    
+    public void Reset()
+    {
+        currentState = TileState.None;
+    }
+
+    public Vector2 GetSnapToPosition()
+    {
+        return snapPosition;
+    }
 }

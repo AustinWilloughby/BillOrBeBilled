@@ -44,6 +44,7 @@ public class ItemController : MonoBehaviour
             case ItemState.Dragging:
                 FollowMouse();
 
+                //  Have each tile check if it is over a valid space
                 foreach(TileController tile in tileColliders)
                 {
                     tile.OverTileCheck();
@@ -59,7 +60,7 @@ public class ItemController : MonoBehaviour
         //  Check if player would move outside the bounds
         Vector2 newPos = Mouse.current.position.ReadValue();
 
-        rect.anchoredPosition = newPos;
+        SetPosition(newPos);
     }
 
     void OnStartDrag()
@@ -72,6 +73,22 @@ public class ItemController : MonoBehaviour
         ChangeStateTo(ItemState.Dragging);
     }
 
+    public void OnRelease()
+    {
+        //  Check if each tile is over a valid space
+        foreach (TileController tile in tileColliders)
+        {
+            if (tile.State != TileState.OverValid)
+            {
+                ChangeStateTo(ItemState.None);
+                return;
+            }
+        }
+
+        //  All tiles are over a valid space
+        ChangeStateTo(ItemState.Placed);
+    }
+
     void ChangeStateTo(ItemState newState)
     {
         switch (newState)
@@ -82,8 +99,33 @@ public class ItemController : MonoBehaviour
                 rect.anchorMin = Vector2.zero;
                 rect.anchorMax = Vector2.zero;
                 break;
+            case ItemState.None:
+                rect.SetParent(canvasSO.inventoryManager.pickedUpRect);
+
+                ResetAllTiles();
+                break;
+            case ItemState.Placed:
+                rect.SetParent(canvasSO.inventoryManager.heldItemsRect);
+
+                SetPosition(tileColliders[0].GetSnapToPosition());
+
+                //ResetAllTiles();
+                break;
         }
 
         currentState = newState;
+    }
+
+    void ResetAllTiles()
+    {
+        foreach(TileController tile in tileColliders)
+        {
+            tile.Reset();
+        }
+    }
+
+    void SetPosition(Vector2 newPos)
+    {
+        rect.anchoredPosition = newPos;
     }
 }
