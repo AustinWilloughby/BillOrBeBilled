@@ -49,17 +49,22 @@ public class TaskGiver : MonoBehaviour
         currentItem = inventorySO.GetRandomItem();
         text.text = starterPhrases[Random.Range(0, starterPhrases.Length - 1)]
             + " " + currentItem.name + "!";
-        //Assign a random item to get
+        DisplayImage(currentItem.itemTexture);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Check for item in inventory
-        //Award money
-        //Add text
-        //give new task
-        GenerateTask();
+        if (!other.transform.root.GetComponent<Movement>()) return;
 
-        //if no item, give task
+        if(!currentItem)
+        {
+            GenerateTask();
+        }
+
+        if(inventorySO.uiInventoryManager.TradeItem(currentItem.itemType))
+        {
+            Energy.Instance.Money += currentItem.itemSellValue;
+            GenerateTask();
+        }
     }
 }
