@@ -31,8 +31,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform rightWheelSpinner;
     [SerializeField] private float wheelRadius = 0.3f;
     [SerializeField] private float maxSteerAngle = 10f;
-    [SerializeField] private VisualEffect leftWheelVFX;
-    [SerializeField] private VisualEffect rightWheelVFX;
+    //[SerializeField] private VisualEffect leftWheelVFX;
+    //[SerializeField] private VisualEffect rightWheelVFX;
 
 
     [Header("Energy Cost")]
@@ -137,8 +137,8 @@ public class Movement : MonoBehaviour
         leftWheelVelocity = Vector3.ClampMagnitude(leftWheelVelocity, maxSpeed);
         rightWheelVelocity = Vector3.ClampMagnitude(rightWheelVelocity, maxSpeed);
 
-        leftWheelVFX.enabled = leftWheelVelocity.magnitude > 0.5f;
-        rightWheelVFX.enabled = rightWheelVelocity.magnitude > 0.5f;
+        //leftWheelVFX.enabled = leftWheelVelocity.magnitude > 0.5f;
+        //rightWheelVFX.enabled = rightWheelVelocity.magnitude > 0.5f;
 
         if (stopDirection != 0)
         {
