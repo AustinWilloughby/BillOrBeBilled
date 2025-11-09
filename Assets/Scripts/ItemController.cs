@@ -22,6 +22,9 @@ public class ItemController : MonoBehaviour
     [SerializeField]
     ItemState currentState;
 
+    [SerializeField]
+    CanvasSO canvasSO;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -62,5 +65,25 @@ public class ItemController : MonoBehaviour
     void OnStartDrag()
     {
         rect = transform.parent.GetComponent<RectTransform>();
+    }
+
+    public void OnClick()
+    {
+        ChangeStateTo(ItemState.Dragging);
+    }
+
+    void ChangeStateTo(ItemState newState)
+    {
+        switch (newState)
+        {
+            case ItemState.Dragging:
+                rect.SetParent(canvasSO.inventoryManager.rect);
+
+                rect.anchorMin = Vector2.zero;
+                rect.anchorMax = Vector2.zero;
+                break;
+        }
+
+        currentState = newState;
     }
 }

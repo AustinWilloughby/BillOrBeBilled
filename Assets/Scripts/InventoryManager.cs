@@ -13,12 +13,16 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     GraphicRaycaster raycaster;
 
+    public RectTransform rect, pickedUpRect, storageRect;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         canvasSO.canvas = canvas;
 
         canvasSO.raycaster = raycaster;
+
+        canvasSO.inventoryManager = this;
     }
 
     // Update is called once per frame

@@ -9,4 +9,6 @@ public class CanvasSO : ScriptableObject
     public Canvas canvas;
 
     public GraphicRaycaster raycaster;
+
+    public InventoryManager inventoryManager;
 }
