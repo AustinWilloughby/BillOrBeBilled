@@ -28,11 +28,14 @@ public class Energy : MonoBehaviour
     private void LateUpdate()
     {
         currentBattery -= drainPerSecond * Time.deltaTime;
+
+        currentBattery = Mathf.Clamp(currentBattery, 0, maxBattery);
+
         drainPerSecond = baseLevelDrain;
     }
-    public void EffectBatteryCharge(float changePerSecond)
+    public void EffectBatteryCharge(float deductPerSecond)
     {
-        drainPerSecond += changePerSecond;
+        drainPerSecond += deductPerSecond;
     }
 
 }
