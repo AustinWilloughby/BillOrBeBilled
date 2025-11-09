@@ -77,6 +77,10 @@ public class ItemController : MonoBehaviour
 
     public void OnRelease()
     {
+
+
+        canvasSO.inventoryManager.activeItem = null;
+
         //  Check if each tile is over a valid space
         foreach (TileController tile in tileColliders)
         {
@@ -89,8 +93,6 @@ public class ItemController : MonoBehaviour
 
         //  All tiles are over a valid space
         ChangeStateTo(ItemState.Placed);
-
-        canvasSO.inventoryManager.activeItem = null;
     }
 
     void ChangeStateTo(ItemState newState)
