@@ -82,6 +82,8 @@ public class InventoryManager : MonoBehaviour
 
         newItem.SetParent(pickedUpRect);
 
+        newItem.localScale = Vector2.one;
+
         gameObject.SetActive(true);
     }
 

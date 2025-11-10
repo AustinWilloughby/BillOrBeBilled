@@ -125,7 +125,7 @@ public class ItemController : MonoBehaviour
             case ItemState.Placed:
                 rect.SetParent(canvasSO.inventoryManager.heldItemsRect);
 
-                SetPosition(GetSnappedCenterPos(tileColliders[0].GetSnapToPosition()));
+                MoveToSnapPosition(tileColliders[0].GetSnapToPositionOffset());
 
                 //ResetAllTiles();
                 break;
@@ -152,60 +152,8 @@ public class ItemController : MonoBehaviour
         rect.Rotate(0f, 0f, newRot);
     }
 
-    Vector2 GetSnappedCenterPos(Vector2 tileCenter)
+    void MoveToSnapPosition(Vector2 snapOffset)
     {
-        Vector2 snapCenter = tileCenter;
-
-        //Debug.Log(transform.rotation.eulerAngles.z);
-        switch(transform.rotation.eulerAngles.z)
-        {
-            case 90f:
-                if (itemTileSize.y % 2 == 0)
-                {
-                    snapCenter.x -= 32f * canvasSO.canvasRect.localScale.x;
-                }
-
-                if (itemTileSize.x % 2 == 0)
-                {
-                    snapCenter.y -= 32f * canvasSO.canvasRect.localScale.y;
-                }
-                break;
-            case 180f:
-                if (itemTileSize.x % 2 == 0)
-                {
-                    snapCenter.x += 32f * canvasSO.canvasRect.localScale.x;
-                }
-
-                if (itemTileSize.y % 2 == 0)
-                {
-                    snapCenter.y -= 32f * canvasSO.canvasRect.localScale.y;
-                }
-                break;
-            case 270f:
-            case -90f:
-                if (itemTileSize.y % 2 == 0)
-                {
-                    snapCenter.x += 32f * canvasSO.canvasRect.localScale.x;
-                }
-
-                if (itemTileSize.x % 2 == 0)
-                {
-                    snapCenter.y += 32f * canvasSO.canvasRect.localScale.y;
-                }
-                break;
-            case 0:
-                if (itemTileSize.x % 2 == 0)
-                {
-                    snapCenter.x -= 32f * canvasSO.canvasRect.localScale.x;
-                }
-
-                if (itemTileSize.y % 2 == 0)
-                {
-                    snapCenter.y += 32f * canvasSO.canvasRect.localScale.y;
-                }
-                break;
-        }
-
-        return snapCenter;
+        SetPosition((Vector2)rect.position + snapOffset);
     }
 }

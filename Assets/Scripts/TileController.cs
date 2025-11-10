@@ -35,7 +35,8 @@ public class TileController : MonoBehaviour
     [SerializeField]
     int hitTileCount = 0;
 
-    Vector2 snapPosition = Vector2.zero;
+    //Vector2 snapPosition = Vector2.zero;
+    Vector2 snapOffset = Vector2.zero;
 
     [SerializeField]
     Color normalColor, validColor, invalidColor;
@@ -83,7 +84,7 @@ public class TileController : MonoBehaviour
     public void OverTileCheck()
     {
         //  Reset Snap Position
-        snapPosition = Vector2.zero;
+        snapOffset = Vector2.zero;
 
         PointerEventData pointerEvent = new PointerEventData(EventSystem.current);
 
@@ -102,7 +103,7 @@ public class TileController : MonoBehaviour
 
             if(result.gameObject.name.Contains("Storage - Tile"))
             {
-                snapPosition = result.gameObject.transform.position;
+                snapOffset = result.gameObject.transform.position - transform.position;
             }
         }
 
@@ -126,8 +127,8 @@ public class TileController : MonoBehaviour
         currentState = TileState.None;
     }
 
-    public Vector2 GetSnapToPosition()
+    public Vector2 GetSnapToPositionOffset()
     {
-        return snapPosition;
+        return snapOffset;
     }
 }
