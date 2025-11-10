@@ -36,9 +36,9 @@ public class ItemController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        foreach(BoxCollider2D childCollider in transform.GetComponentsInChildren<BoxCollider2D>())
+        foreach(TileController childTile in transform.GetComponentsInChildren<TileController>())
         {
-            tileColliders.Add(childCollider.GetComponent<TileController>());
+            tileColliders.Add(childTile);
         }
     }
 
