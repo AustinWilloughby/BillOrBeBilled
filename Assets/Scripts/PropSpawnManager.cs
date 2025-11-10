@@ -27,7 +27,7 @@ public class PropSpawnManager : MonoBehaviour
 
         playerPos.y += spawnOffset;
 
-        Debug.Log(playerPos);
+        //Debug.Log(playerPos);
 
         GameObject newItem = Instantiate(inventorySO.GetItemDataByType(itemType).itemPropPrefab, playerPos, Quaternion.identity);
     }
