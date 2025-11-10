@@ -25,7 +25,7 @@ public class InventorySO : ScriptableObject
 
     public InventoryManager uiInventoryManager;
 
-    public PropSpawnManager spawnManager;
+    public PropDropper propDropperManager;
 
     public ItemSO GetItemDataByType(ItemTypes itemType)
     {

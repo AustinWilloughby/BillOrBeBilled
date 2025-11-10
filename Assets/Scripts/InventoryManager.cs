@@ -10,9 +10,6 @@ public class InventoryManager : MonoBehaviour
     CanvasSO canvasSO;
 
     [SerializeField]
-    Canvas canvas;
-
-    [SerializeField]
     CanvasScaler canvasScaler;
 
     [SerializeField]
@@ -96,7 +93,7 @@ public class InventoryManager : MonoBehaviour
         {
             ItemController missedItem = pickedUpRect.GetChild(i).GetComponent<ItemController>();
 
-            inventorySO.spawnManager.SpawnItem(missedItem.itemType);
+            inventorySO.propDropperManager.SpawnItem(missedItem.itemType);
 
             Destroy(missedItem.gameObject);
         }
