@@ -50,8 +50,6 @@ public class TileController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetStateTo(isActive);
-
         switch (currentState)
         {
             case TileState.None:
@@ -64,16 +62,6 @@ public class TileController : MonoBehaviour
                 tileImage.color = invalidColor;
                 break;
         }
-    }
-
-    private void OnEnable()
-    {
-        SetStateTo(isActive);
-    }
-
-    void SetStateTo(bool value)
-    {
-        tileImage.enabled = value;
     }
 
     public void OverTileCheck()
@@ -125,5 +113,15 @@ public class TileController : MonoBehaviour
     public Vector2 GetSnapToPositionOffset()
     {
         return snapOffset;
+    }
+
+    public bool IsOverValid()
+    {
+        if(tileImage.enabled)
+        {
+            return currentState == TileState.OverValid;
+        }
+
+        return true;
     }
 }

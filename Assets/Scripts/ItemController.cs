@@ -90,7 +90,7 @@ public class ItemController : MonoBehaviour
         //  Check if each tile is over a valid space
         foreach (TileController tile in tileColliders)
         {
-            if (tile.State != TileState.OverValid)
+            if (!tile.IsOverValid())
             {
                 ChangeStateTo(ItemState.None);
                 return;
