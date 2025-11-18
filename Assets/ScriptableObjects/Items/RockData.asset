@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RockData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 6673060763060081312, guid: 4f2f3d11ecc62164c9d08dd81aaba400, type: 3}
-  itemUIPrefab: {fileID: 921205077739357006, guid: ecda0fa6795789e44be0009cf7cfb041, type: 3}
+  itemUIPrefab: {fileID: 5470681197355222418, guid: 8e94276293c03a345b3bbdd7acbea033, type: 3}
   itemType: 7
   itemSellValue: 1
   itemEnergyCost: 0

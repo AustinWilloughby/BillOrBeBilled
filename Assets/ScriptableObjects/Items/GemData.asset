@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GemData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 8488241889689532934, guid: 7219f45efaca99342bdb9af1bd10729b, type: 3}
-  itemUIPrefab: {fileID: 1754706020800896109, guid: d1729aa6cb993114b88608e429230bab, type: 3}
+  itemUIPrefab: {fileID: 1026293957452612542, guid: 5760e26520efef145b3811d9965e5f8c, type: 3}
   itemType: 4
   itemSellValue: 100
   itemEnergyCost: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GyrosData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 5034151857136442010, guid: 075549d03d1424f40a4ca7b27b463d6d, type: 3}
-  itemUIPrefab: {fileID: 6399425211024176051, guid: 3e964dcec5213844fad3a0c08b1d7150, type: 3}
+  itemUIPrefab: {fileID: 791664942604386267, guid: 53e97890a0c333141a9404d61c5b938a, type: 3}
   itemType: 5
   itemSellValue: 20
   itemEnergyCost: 0

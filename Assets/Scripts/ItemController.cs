@@ -11,31 +11,31 @@ public enum ItemState
 
 public class ItemController : MonoBehaviour
 {
-    [SerializeField]
-    List<TileController> tileColliders;
+    List<TileController> tileColliders = new List<TileController>();
 
-    Vector2 moveDelta;
-
-    [SerializeField]
     RectTransform rect;
 
-    [SerializeField]
     ItemState currentState;
 
     [SerializeField]
     CanvasSO canvasSO;
 
     [SerializeField]
-    Vector2 itemTileSize;
-
-    [SerializeField]
     InventorySO inventorySO;
 
-    public ItemTypes itemType;
+    [SerializeField]
+    ItemTypes itemType;
+
+    public ItemTypes ItemType
+    {
+        get { return itemType; }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rect = GetComponent<RectTransform>();
+
         foreach(TileController childTile in transform.GetComponentsInChildren<TileController>())
         {
             tileColliders.Add(childTile);
@@ -68,8 +68,6 @@ public class ItemController : MonoBehaviour
         //  Check if player would move outside the bounds
         Vector2 newPos = Mouse.current.position.ReadValue();
 
-        //newPos /= canvasSO.canvasRect.localScale;
-
         SetPosition(newPos);
     }
 
@@ -101,8 +99,6 @@ public class ItemController : MonoBehaviour
 
         //  All tiles are over a valid space
         ChangeStateTo(ItemState.Placed);
-
-        
     }
 
     void ChangeStateTo(ItemState newState)

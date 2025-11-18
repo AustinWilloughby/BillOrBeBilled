@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ScrapData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 8210762432591184069, guid: ea36b883387c6d04e9178dd0f4f7eaf9, type: 3}
-  itemUIPrefab: {fileID: 2535641161486022727, guid: 1a08447dc83df174ea46aa292c7f7e3a, type: 3}
+  itemUIPrefab: {fileID: 824747625262234567, guid: 6924c0b127ff0fe4793136ca67ce03fa, type: 3}
   itemType: 8
   itemSellValue: 1
   itemEnergyCost: 0

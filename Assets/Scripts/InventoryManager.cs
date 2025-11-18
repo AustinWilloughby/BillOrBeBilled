@@ -93,7 +93,7 @@ public class InventoryManager : MonoBehaviour
         {
             ItemController missedItem = pickedUpRect.GetChild(i).GetComponent<ItemController>();
 
-            inventorySO.propDropperManager.SpawnItem(missedItem.itemType);
+            inventorySO.propDropperManager.SpawnItem(missedItem.ItemType);
 
             Destroy(missedItem.gameObject);
         }
@@ -116,7 +116,7 @@ public class InventoryManager : MonoBehaviour
 
         foreach (ItemController item in storedItems)
         {
-            if (item.itemType == itemType)
+            if (item.ItemType == itemType)
             {
                 foundItem = item;
 

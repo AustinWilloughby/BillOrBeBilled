@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum ItemTypes
 {
-    Cone,
+    Pryamid,
     Container,
     Fan,
     Gear,

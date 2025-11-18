@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MotherBoardData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 344265368252960266, guid: a2f53922e2bf5ed4387942b5d9080a2c, type: 3}
-  itemUIPrefab: {fileID: 2831547617423997147, guid: 8a18360607612574e813e840de8fad9c, type: 3}
+  itemUIPrefab: {fileID: 6216326054811078459, guid: c95e32b8014ed1041b8b5b30a2635889, type: 3}
   itemType: 6
   itemSellValue: 200
   itemEnergyCost: 0
