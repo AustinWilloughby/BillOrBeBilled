@@ -20,5 +20,8 @@ public class PropDropper : MonoBehaviour
     public void SpawnItem(ItemTypes itemType)
     {
         GameObject newItem = Instantiate(inventorySO.GetItemDataByType(itemType).itemPropPrefab, transform.position, Quaternion.identity);
+        Vector3 randomForce = Random.onUnitSphere;
+        randomForce.y = Mathf.Abs(randomForce.y);
+        newItem.GetComponent<Rigidbody>().AddForce(randomForce * 5000.0f);
     }
 }

@@ -189,7 +189,7 @@ public class Movement : MonoBehaviour
 
             Quaternion targetRotation = Quaternion.identity;
             smoothedMovementX = Mathf.Lerp(smoothedMovementX, moveInput.x, 0.9f * Time.fixedDeltaTime);
-            Debug.Log(Mathf.Abs(smoothedMovementX) < 0.1f && moveInput.x == 0);
+
             if (Mathf.Abs(smoothedMovementX) < 0.1f && moveInput.x == 0)
             {
                 targetRotation = Quaternion.LookRotation(rotatedForward, axleUp);
@@ -220,7 +220,6 @@ public class Movement : MonoBehaviour
         currentLeanAngle = Mathf.Lerp(currentLeanAngle, targetLean, leanSpeed * Time.fixedDeltaTime);
 
         Vector3 difference = newPosition - transform.position;
-        Debug.DrawRay(transform.position, difference * 10);
 
         rotatedForward = finalRotation * Vector3.forward;
         newPosition = transform.position 
