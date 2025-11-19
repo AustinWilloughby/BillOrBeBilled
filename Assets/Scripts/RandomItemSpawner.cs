@@ -14,7 +14,7 @@ public class RandomItemSpawner : MonoBehaviour
                 Random.Range(-worldBounds.x, worldBounds.x),
                 150,
                 Random.Range(-worldBounds.y, worldBounds.y));
-            Instantiate(inventorySO.GetRandomItem().itemPropPrefab, randPos, Random.rotationUniform);
+            Instantiate(inventorySO.GetRandomItem().itemPropPrefab, randPos, Random.rotationUniform, transform);
         }
     }
 }

@@ -25,7 +25,12 @@ public class ObjectGrabber : MonoBehaviour
         inFrontItems.Clear();
         foreach(Collider collider in pickupsInFront)
         {
-            PropItemData pickupItem = collider.transform.root.GetComponent<PropItemData>();
+            PropItemData pickupItem = collider.GetComponent<PropItemData>();
+
+            if(pickupItem == null)
+            {
+                pickupItem = collider.GetComponentInParent<PropItemData>();
+            }
 
             if(pickupItem != null && !inFrontItems.Contains(pickupItem))
             {
