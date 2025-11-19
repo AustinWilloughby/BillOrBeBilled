@@ -93,6 +93,6 @@ MonoBehaviour:
   currentState: 0
   canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
   hitTileCount: 0
-  normalColor: {r: 0.801, g: 0.801, b: 0.801, a: 0.627451}
-  validColor: {r: 1, g: 1, b: 1, a: 0.627451}
-  invalidColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 0.627451}
+  normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 0.627451}
+  validColor: {r: 0, g: 0.56326723, b: 1, a: 0.627451}
+  invalidColor: {r: 0.9575472, g: 0.9717074, b: 1, a: 0.627451}

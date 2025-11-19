@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -23,6 +22,9 @@ public class InventoryManager : MonoBehaviour
     InventorySO inventorySO;
 
     List<ItemController> storedItems = new List<ItemController>();
+
+    [SerializeField]
+    bool isActive = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -81,7 +83,7 @@ public class InventoryManager : MonoBehaviour
 
         newItem.localScale = Vector2.one;
 
-        gameObject.SetActive(true);
+        SetActive(true);
     }
 
     private void OnDisable()
@@ -134,5 +136,17 @@ public class InventoryManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void OnToggleInventory(InputAction.CallbackContext context)
+    {
+        SetActive(!isActive);
+    }
+
+    public void SetActive(bool value)
+    {
+        isActive = value;
+
+        gameObject.SetActive(value);
     }
 }

@@ -190,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5496688570108455740, guid: 01b76b834f6a3cc4697ab50864633983, type: 3}
       propertyPath: m_Padding.m_Bottom
-      value: 76
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 5543752247574602279, guid: 01b76b834f6a3cc4697ab50864633983, type: 3}
       propertyPath: m_Enabled
