@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField]
+    Camera _camera;
+
+    [SerializeField]
     CanvasSO canvasSO;
 
     [SerializeField]
@@ -83,6 +86,8 @@ public class InventoryManager : MonoBehaviour
 
         newItem.localScale = Vector2.one;
 
+        newItem.anchoredPosition3D = Vector3.zero;
+
         SetActive(true);
     }
 
@@ -147,6 +152,6 @@ public class InventoryManager : MonoBehaviour
     {
         isActive = value;
 
-        gameObject.SetActive(value);
+        _camera.gameObject.SetActive(value);
     }
 }

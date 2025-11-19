@@ -140,7 +140,7 @@ public class ItemController : MonoBehaviour
 
     void SetPosition(Vector2 newPos)
     {
-        rect.anchoredPosition = newPos / canvasSO.canvasRect.localScale;
+        rect.anchoredPosition = newPos;//e / canvasSO.canvasRect.localScale;
     }
 
     public void AddRotation(float newRot)
