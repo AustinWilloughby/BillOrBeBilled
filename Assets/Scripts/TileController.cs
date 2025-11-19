@@ -30,7 +30,7 @@ public class TileController : MonoBehaviour
     List<RaycastResult> raycastResults = new List<RaycastResult>();
 
     [SerializeField]
-    CanvasSO canvasSO;
+    InventorySO inventorySO;
 
     [SerializeField]
     int hitTileCount = 0;
@@ -73,7 +73,7 @@ public class TileController : MonoBehaviour
 
         pointerEvent.position = transform.position;
 
-        canvasSO.raycaster.Raycast(pointerEvent, raycastResults);
+        inventorySO.uiInventoryManager.Raycaster.Raycast(pointerEvent, raycastResults);
 
 
         hitTileCount = 0;

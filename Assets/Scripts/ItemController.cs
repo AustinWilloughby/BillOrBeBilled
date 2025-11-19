@@ -18,9 +18,6 @@ public class ItemController : MonoBehaviour
     ItemState currentState;
 
     [SerializeField]
-    CanvasSO canvasSO;
-
-    [SerializeField]
     InventorySO inventorySO;
 
     [SerializeField]
@@ -80,12 +77,12 @@ public class ItemController : MonoBehaviour
     {
         ChangeStateTo(ItemState.Dragging);
 
-        canvasSO.inventoryManager.activeItem = this;
+        inventorySO.uiInventoryManager.ActiveItem = this;
     }
 
     public void OnRelease()
     {
-        canvasSO.inventoryManager.activeItem = null;
+        inventorySO.uiInventoryManager.ActiveItem = null;
 
         //  Check if each tile is over a valid space
         foreach (TileController tile in tileColliders)
@@ -106,20 +103,20 @@ public class ItemController : MonoBehaviour
         switch (newState)
         {
             case ItemState.Dragging:
-                rect.SetParent(canvasSO.inventoryManager.rect);
+                rect.SetParent(inventorySO.uiInventoryManager.menuRect);
 
                 rect.anchorMin = Vector2.zero;
                 rect.anchorMax = Vector2.zero;
                 break;
             case ItemState.None:
-                rect.SetParent(canvasSO.inventoryManager.pickedUpRect);
+                rect.SetParent(inventorySO.uiInventoryManager.pickedUpRect);
 
                 rect.rotation = Quaternion.identity;
 
                 ResetAllTiles();
                 break;
             case ItemState.Placed:
-                rect.SetParent(canvasSO.inventoryManager.heldItemsRect);
+                rect.SetParent(inventorySO.uiInventoryManager.heldItemsRect);
 
                 MoveToSnapPosition(tileColliders[0].GetSnapToPositionOffset());
 
@@ -140,7 +137,8 @@ public class ItemController : MonoBehaviour
 
     void SetPosition(Vector2 newPos)
     {
-        rect.anchoredPosition = newPos;//e / canvasSO.canvasRect.localScale;
+        rect.anchoredPosition = newPos;//inventorySO.uiInventoryManager.CanvasScaler.localScale;
+
     }
 
     public void AddRotation(float newRot)

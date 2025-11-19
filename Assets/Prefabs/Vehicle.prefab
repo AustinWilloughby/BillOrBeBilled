@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PropSpawnManager
   inventorySO: {fileID: 11400000, guid: 1e2513df45fcd4543b15eb8a45f989ce, type: 2}
-  spawnOffset: 0
 --- !u!1 &7017562448343039947
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +151,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7343460081723091773}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd8c2449dadc2d44cb9512c57c5a66ad, type: 3}
   m_Name: 
@@ -170,7 +169,7 @@ MonoBehaviour:
   wallLayers:
     serializedVersion: 2
     m_Bits: 128
-  maxLeanAngle: 60
+  maxLeanAngle: 90
   leanSpeed: 5
   terrainAlignmentSpeed: 5
   leftSuspension: {fileID: 1811738226360498616}
@@ -179,7 +178,7 @@ MonoBehaviour:
   rightWheelSpinner: {fileID: 4287774400090607698}
   wheelRadius: 1
   maxSteerAngle: 70
-  energyCostScaler: 0.1
+  energyCostScaler: 0.7
 --- !u!114 &5310048305492625482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +304,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bfb0c3db-6443-4940-9c3a-36a091d69e25
+    m_ActionName: 'Player/Exit[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: 
