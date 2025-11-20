@@ -65,6 +65,8 @@ public class ItemController : MonoBehaviour
         //  Check if player would move outside the bounds
         Vector2 newPos = Mouse.current.position.ReadValue();
 
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(inventorySO.uiInventoryManager.menuRect, newPos, inventorySO.uiInventoryManager.Camera, out newPos);
+
         SetPosition(newPos);
     }
 
@@ -105,8 +107,8 @@ public class ItemController : MonoBehaviour
             case ItemState.Dragging:
                 rect.SetParent(inventorySO.uiInventoryManager.menuRect);
 
-                rect.anchorMin = Vector2.zero;
-                rect.anchorMax = Vector2.zero;
+                rect.anchorMin = new Vector2(.5f, .5f);
+                rect.anchorMax = new Vector2(.5f, .5f);
                 break;
             case ItemState.None:
                 rect.SetParent(inventorySO.uiInventoryManager.pickedUpRect);
@@ -137,7 +139,7 @@ public class ItemController : MonoBehaviour
 
     void SetPosition(Vector2 newPos)
     {
-        rect.anchoredPosition = newPos;//inventorySO.uiInventoryManager.CanvasScaler.localScale;
+        rect.anchoredPosition = newPos;// / inventorySO.uiInventoryManager.CanvasRect.localScale;
 
     }
 

@@ -41,10 +41,12 @@ public class TileController : MonoBehaviour
     [SerializeField]
     Color normalColor, validColor, invalidColor;
 
+    RectTransform rect;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rect = GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
@@ -66,12 +68,15 @@ public class TileController : MonoBehaviour
 
     public void OverTileCheck()
     {
+        if (!tileImage.isActiveAndEnabled)
+            return;
+
         //  Reset Snap Position
         snapOffset = Vector2.zero;
 
         PointerEventData pointerEvent = new PointerEventData(EventSystem.current);
 
-        pointerEvent.position = transform.position;
+        pointerEvent.position = rect.anchoredPosition;
 
         inventorySO.uiInventoryManager.Raycaster.Raycast(pointerEvent, raycastResults);
 
@@ -91,7 +96,7 @@ public class TileController : MonoBehaviour
         }
 
 
-        //Debug.Log(hitTileCount);
+        Debug.Log(raycastResults.Count);
 
         if (hitTileCount == 2)
         {

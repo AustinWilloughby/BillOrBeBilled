@@ -20,7 +20,12 @@ public class InventoryManager : MonoBehaviour
     {
         get { return raycaster; }
     }
-    //RectTransform canvasRect;
+    
+    RectTransform canvasRect;
+    public RectTransform CanvasRect
+    {
+        get { return canvasRect; }
+    }
 
 
     [SerializeField]
@@ -29,6 +34,10 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField]
     Camera _camera;
+    public Camera Camera
+    {
+        get { return _camera; }
+    }
 
 
 
@@ -53,7 +62,7 @@ public class InventoryManager : MonoBehaviour
     {
         canvasScaler = _canvas.GetComponent<CanvasScaler>();
         raycaster = _canvas.GetComponent<GraphicRaycaster>();
-        //canvasRect = _canvas.GetComponent<RectTransform>();
+        canvasRect = _canvas.GetComponent<RectTransform>();
 
         //canvasSO.canvasRect = canvasRect;
         canvasSO.raycaster = raycaster;
@@ -117,7 +126,7 @@ public class InventoryManager : MonoBehaviour
         SetActive(true);
     }
 
-    private void OnDisable()
+    private void ClearInventory()
     {
         //
         //  Spawn any not stored items
@@ -179,5 +188,10 @@ public class InventoryManager : MonoBehaviour
         isActive = value;
 
         _camera.gameObject.SetActive(value);
+
+        if(!isActive)
+        {
+            ClearInventory();
+        }
     }
 }
