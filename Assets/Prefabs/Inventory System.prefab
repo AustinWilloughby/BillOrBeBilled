@@ -91,7 +91,7 @@ MonoBehaviour:
   tileImage: {fileID: 1807518826840593714}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -223,7 +223,7 @@ MonoBehaviour:
   tileImage: {fileID: 1801592618253914278}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -319,7 +319,7 @@ MonoBehaviour:
   tileImage: {fileID: 2057124830483984788}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -415,7 +415,7 @@ MonoBehaviour:
   tileImage: {fileID: 2206370903806123877}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -637,7 +637,7 @@ MonoBehaviour:
   tileImage: {fileID: 670730499684533967}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -733,7 +733,7 @@ MonoBehaviour:
   tileImage: {fileID: 823290932152775799}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -937,7 +937,7 @@ MonoBehaviour:
   tileImage: {fileID: 974474057322777709}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   tileImage: {fileID: 539834853874964906}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   tileImage: {fileID: 4123761136261556214}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -1270,7 +1270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -561.71704}
+  m_AnchoredPosition: {x: 0, y: -558.85657}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2566121096964251500
@@ -1404,7 +1404,7 @@ MonoBehaviour:
   tileImage: {fileID: 4310681678442323596}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   tileImage: {fileID: 4410633373045221754}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -1671,7 +1671,7 @@ MonoBehaviour:
   tileImage: {fileID: 3572635215242064433}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -1767,7 +1767,7 @@ MonoBehaviour:
   tileImage: {fileID: 3819398589944573894}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -1863,7 +1863,7 @@ MonoBehaviour:
   tileImage: {fileID: 3207258636266099989}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -2034,7 +2034,7 @@ MonoBehaviour:
   tileImage: {fileID: 3389413462454047229}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -2229,18 +2229,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67afd1d3ffefc314284c2fe794491f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
-  _camera: {fileID: 7016777235620415546}
+  _canvas: {fileID: 4761110966870492142}
   canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
-  canvasScaler: {fileID: 2326022744512728863}
-  raycaster: {fileID: 1623161896951551784}
-  rect: {fileID: 5351802324197585313}
+  _camera: {fileID: 7016777235620415546}
+  menuRect: {fileID: 5351802324197585313}
   pickedUpRect: {fileID: 7028185834419210777}
   storageRect: {fileID: 3645242984346168837}
   heldItemsRect: {fileID: 2902517270597756198}
-  canvasRect: {fileID: 6964136016055623293}
-  activeItem: {fileID: 0}
   inventorySO: {fileID: 11400000, guid: 1e2513df45fcd4543b15eb8a45f989ce, type: 2}
-  isActive: 1
 --- !u!114 &1589573547870351637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,7 +2368,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Exit[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &4116819160547952983
@@ -2544,7 +2540,7 @@ MonoBehaviour:
   tileImage: {fileID: 2724350899902576298}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -2640,7 +2636,7 @@ MonoBehaviour:
   tileImage: {fileID: 2595412764108109999}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -2736,7 +2732,7 @@ MonoBehaviour:
   tileImage: {fileID: 6878205038771635160}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -2832,7 +2828,7 @@ MonoBehaviour:
   tileImage: {fileID: 6794775752219948544}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -2928,7 +2924,7 @@ MonoBehaviour:
   tileImage: {fileID: 5890969932634114916}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3024,7 +3020,7 @@ MonoBehaviour:
   tileImage: {fileID: 5851942166631241289}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3120,7 +3116,7 @@ MonoBehaviour:
   tileImage: {fileID: 6328268296837775697}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3216,7 +3212,7 @@ MonoBehaviour:
   tileImage: {fileID: 6328359587642843812}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3312,7 +3308,7 @@ MonoBehaviour:
   tileImage: {fileID: 5443117405953376570}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3408,7 +3404,7 @@ MonoBehaviour:
   tileImage: {fileID: 4727739291697764837}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3504,7 +3500,7 @@ MonoBehaviour:
   tileImage: {fileID: 4657138224356978090}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3600,7 +3596,7 @@ MonoBehaviour:
   tileImage: {fileID: 4991827376191775339}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3696,7 +3692,7 @@ MonoBehaviour:
   tileImage: {fileID: 5083449522392073414}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3792,7 +3788,7 @@ MonoBehaviour:
   tileImage: {fileID: 8824095543681605267}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3888,7 +3884,7 @@ MonoBehaviour:
   tileImage: {fileID: 9006023054620192108}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -3984,7 +3980,7 @@ MonoBehaviour:
   tileImage: {fileID: 9221226144229016054}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4080,7 +4076,7 @@ MonoBehaviour:
   tileImage: {fileID: 9111356985339080761}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4176,7 +4172,7 @@ MonoBehaviour:
   tileImage: {fileID: 9091935126083547186}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4272,7 +4268,7 @@ MonoBehaviour:
   tileImage: {fileID: 8173257616107519739}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4368,7 +4364,7 @@ MonoBehaviour:
   tileImage: {fileID: 8214666999588306486}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4464,7 +4460,7 @@ MonoBehaviour:
   tileImage: {fileID: 7545714300872552562}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4560,7 +4556,7 @@ MonoBehaviour:
   tileImage: {fileID: 7775128703982502088}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4656,7 +4652,7 @@ MonoBehaviour:
   tileImage: {fileID: 7760788318426619549}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4842,7 +4838,7 @@ MonoBehaviour:
   tileImage: {fileID: 7899496335079888769}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -4938,7 +4934,7 @@ MonoBehaviour:
   tileImage: {fileID: 7133710775516935035}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -5034,7 +5030,7 @@ MonoBehaviour:
   tileImage: {fileID: 7096382114245210708}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
@@ -5056,7 +5052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3263459102979518816
 Transform:
   m_ObjectHideFlags: 0
@@ -5258,7 +5254,7 @@ MonoBehaviour:
   tileImage: {fileID: 7373587397866799736}
   isActive: 1
   currentState: 0
-  canvasSO: {fileID: 11400000, guid: 979fd4d53ca42434f82d5c8b9ad02f10, type: 2}
+  inventorySO: {fileID: 0}
   hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 1}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 1}
