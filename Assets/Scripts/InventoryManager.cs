@@ -63,6 +63,14 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     int storageTileCount;
 
+    [SerializeField]
+    Vector2 tileSize;
+    public Vector2 TileSize
+    {
+        get { return tileSize; }
+    }
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -101,6 +109,8 @@ public class InventoryManager : MonoBehaviour
             TileController spawnedTile = Instantiate(tilePrefab);
 
             spawnedTile.Init(storageRect);
+
+            tileSize = spawnedTile.GetTileSize();
         }
     }
 

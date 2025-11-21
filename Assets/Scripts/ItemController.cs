@@ -45,7 +45,7 @@ public class ItemController : MonoBehaviour
 
         rect.localScale = Vector2.one;
 
-        rect.anchoredPosition3D = Vector3.zero;
+        rect.anchoredPosition3D = new Vector3(0f, 0f, parent.position.z);
 
         ResetAllTiles();
     }
@@ -148,10 +148,9 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    void SetPosition(Vector2 newPos)
+    void SetPosition(Vector3 newPos)
     {
-        rect.anchoredPosition = newPos;// / inventorySO.uiInventoryManager.CanvasRect.localScale;
-
+        rect.anchoredPosition3D = newPos;// / inventorySO.uiInventoryManager.CanvasRect.localScale;
     }
 
     public void AddRotation(float newRot)
@@ -161,6 +160,11 @@ public class ItemController : MonoBehaviour
 
     void MoveToSnapPosition(Vector2 snapOffset)
     {
-        SetPosition((Vector2)rect.position + snapOffset);
+        Vector3 snapPos = rect.anchoredPosition3D;
+        snapPos.x += snapOffset.x;
+        snapPos.y += snapOffset.y;
+        snapPos.z = 0;
+
+        SetPosition(snapPos);
     }
 }

@@ -27,8 +27,6 @@ public class TileController : MonoBehaviour
         get { return currentState; }
     }
 
-    List<RaycastResult> raycastResults = new List<RaycastResult>();
-
     [SerializeField]
     InventorySO inventorySO;
 
@@ -45,12 +43,19 @@ public class TileController : MonoBehaviour
 
     BoxCollider2D boxCollider;
 
+    List<RaycastHit2D> raycastHits = new List<RaycastHit2D>();
+
+    [SerializeField]
+    LayerMask tileLayerMask;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         rect = GetComponent<RectTransform>();
 
         boxCollider = GetComponent<BoxCollider2D>();
+
+        boxCollider.enabled = tileImage.enabled;
     }
 
     public void Init(RectTransform parent)
@@ -59,7 +64,7 @@ public class TileController : MonoBehaviour
 
         rect.localScale = Vector2.one;
 
-        rect.anchoredPosition3D = Vector3.zero;
+        rect.anchoredPosition3D = new Vector3(0f, 0f, parent.position.z);
 
         Reset();
     }
@@ -89,31 +94,24 @@ public class TileController : MonoBehaviour
         //  Reset Snap Position
         snapOffset = Vector2.zero;
 
-        PointerEventData pointerEvent = new PointerEventData(EventSystem.current);
+        //  Raycast
+        Vector3 raycastOrigin = transform.position;
+        raycastOrigin.z -= 1f;
+        Physics2D.Raycast(raycastOrigin, transform.forward, ContactFilter2D.noFilter, raycastHits);
 
-        pointerEvent.position = rect.anchoredPosition;
-
-        inventorySO.uiInventoryManager.Raycaster.Raycast(pointerEvent, raycastResults);
-
-
+        
         hitTileCount = 0;
-        foreach (RaycastResult result in raycastResults)
+        foreach (RaycastHit2D result in raycastHits)
         {
-            if (result.gameObject.CompareTag("Tile"))
-            {
-                ++hitTileCount;
-            }
+             ++hitTileCount;
 
-            if(result.gameObject.name.Contains("Storage - Tile"))
-            {
-                snapOffset = result.gameObject.transform.position - transform.position;
-            }
+             snapOffset = result.transform.position - transform.position;            
         }
 
 
-        Debug.Log(raycastResults.Count);
+        Debug.Log(raycastHits.Count);
 
-        if (hitTileCount == 2)
+        if (hitTileCount == 1)
         {
             currentState = TileState.OverValid;
         }
@@ -122,14 +120,14 @@ public class TileController : MonoBehaviour
             currentState = TileState.OverInvalid;
         }
 
-        raycastResults.Clear();
+        raycastHits.Clear();
     }
     
     public void Reset()
     {
         currentState = TileState.None;
 
-        boxCollider.size = rect.rect.size * 2f;
+        boxCollider.size = inventorySO.uiInventoryManager.TileSize;
     }
 
     public Vector2 GetSnapToPositionOffset()
@@ -145,5 +143,27 @@ public class TileController : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (rect != null && tileImage.isActiveAndEnabled)
+        {
+            Gizmos.color = Color.red;
+
+            Vector3 raycastOrigin = transform.position;
+            //raycastOrigin.z -= 1f;
+            Gizmos.DrawRay(raycastOrigin, transform.forward);
+        }
+    }
+
+    public Vector2 GetTileSize()
+    {
+        return boxCollider.size;
+    }
+
+    public void SetTileSize(Vector2 size)
+    {
+
     }
 }
