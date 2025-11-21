@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpheresData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 3802479173187960297, guid: c5ccbf2317bcc47498dbdfece8ccbf83, type: 3}
-  itemUIPrefab: {fileID: 1567157745446291108, guid: 258150ff63b0c424985fdb81bb76b08e, type: 3}
+  itemUIPrefab: {fileID: 4294718578267754286, guid: 258150ff63b0c424985fdb81bb76b08e, type: 3}
   itemType: 9
   itemSellValue: 10
   itemEnergyCost: 0

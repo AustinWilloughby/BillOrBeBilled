@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GearsData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 6628645089871970908, guid: a8c20e3d343470f489680bc6fbf75885, type: 3}
-  itemUIPrefab: {fileID: 7641312471359908213, guid: fa3b8d884dc172a43b2ec0153f00f710, type: 3}
+  itemUIPrefab: {fileID: 4912630414324326655, guid: fa3b8d884dc172a43b2ec0153f00f710, type: 3}
   itemType: 3
   itemSellValue: 10
   itemEnergyCost: 0

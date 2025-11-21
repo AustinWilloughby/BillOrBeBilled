@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ContainerData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 5588843932025998718, guid: 3cf213ae84b2e69418b5c26d82b6dfb1, type: 3}
-  itemUIPrefab: {fileID: 1473745367925912685, guid: fbbe329bf2fd8444e90de637e82fbc95, type: 3}
+  itemUIPrefab: {fileID: 4203413140020821479, guid: fbbe329bf2fd8444e90de637e82fbc95, type: 3}
   itemType: 1
   itemSellValue: 15
   itemEnergyCost: 0

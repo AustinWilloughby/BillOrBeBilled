@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PryamidData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 3966140616172457552, guid: 574778facb7c84f48b29add05f4bc331, type: 3}
-  itemUIPrefab: {fileID: 4721008768241080566, guid: 20578bb4ef2eb664a9c647560938d959, type: 3}
+  itemUIPrefab: {fileID: 8044038159542784380, guid: 20578bb4ef2eb664a9c647560938d959, type: 3}
   itemType: 0
   itemSellValue: 42
   itemEnergyCost: 0

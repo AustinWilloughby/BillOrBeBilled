@@ -43,10 +43,25 @@ public class TileController : MonoBehaviour
 
     RectTransform rect;
 
+    BoxCollider2D boxCollider;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         rect = GetComponent<RectTransform>();
+
+        boxCollider = GetComponent<BoxCollider2D>();
+    }
+
+    public void Init(RectTransform parent)
+    {
+        rect.SetParent(parent);
+
+        rect.localScale = Vector2.one;
+
+        rect.anchoredPosition3D = Vector3.zero;
+
+        Reset();
     }
 
     // Update is called once per frame
@@ -113,6 +128,8 @@ public class TileController : MonoBehaviour
     public void Reset()
     {
         currentState = TileState.None;
+
+        boxCollider.size = rect.rect.size * 2f;
     }
 
     public Vector2 GetSnapToPositionOffset()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SwordData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 4316031534047759600, guid: 4b5da3f5345ccbb40b24bb8f6f8ebcc0, type: 3}
-  itemUIPrefab: {fileID: 558571266705054854, guid: 21984c4ce26d7bd44b8699c92086ee51, type: 3}
+  itemUIPrefab: {fileID: 3019170951663080716, guid: 21984c4ce26d7bd44b8699c92086ee51, type: 3}
   itemType: 10
   itemSellValue: 5
   itemEnergyCost: 0

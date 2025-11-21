@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TireIronData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 3060851190378960783, guid: dc8bdd919479b4c4c93359ddffd585db, type: 3}
-  itemUIPrefab: {fileID: 5072696210383378085, guid: 9cbca5a401c93a043bd0845c032ffd59, type: 3}
+  itemUIPrefab: {fileID: 7513015951665700655, guid: 9cbca5a401c93a043bd0845c032ffd59, type: 3}
   itemType: 11
   itemSellValue: 5
   itemEnergyCost: 0

@@ -57,6 +57,12 @@ public class InventoryManager : MonoBehaviour
 
     bool isActive = true;
 
+    [SerializeField]
+    TileController tilePrefab;
+
+    [SerializeField]
+    int storageTileCount;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -77,13 +83,26 @@ public class InventoryManager : MonoBehaviour
         InputUser.PerformPairingWithDevice(Keyboard.current, input.user);
     }
 
+    private void Start()
+    {
+        SetupStorageTiles();
+    }
+
     // Update is called once per frame
     void Update()
     {
 
     }
 
+    void SetupStorageTiles()
+    {
+        for (int i = 0; i < storageTileCount; i++)
+        {
+            TileController spawnedTile = Instantiate(tilePrefab);
 
+            spawnedTile.Init(storageRect);
+        }
+    }
 
     public void OnRotate(InputAction.CallbackContext context)
     {
@@ -115,13 +134,9 @@ public class InventoryManager : MonoBehaviour
 
     public void PickupItemOfType(ItemTypes itemType)
     {
-        RectTransform newItem = Instantiate(inventorySO.GetItemDataByType(itemType).itemUIPrefab);
+        ItemController newItem = Instantiate(inventorySO.GetItemDataByType(itemType).itemUIPrefab);
 
-        newItem.SetParent(pickedUpRect);
-
-        newItem.localScale = Vector2.one;
-
-        newItem.anchoredPosition3D = Vector3.zero;
+        newItem.Init(pickedUpRect);
 
         SetActive(true);
     }

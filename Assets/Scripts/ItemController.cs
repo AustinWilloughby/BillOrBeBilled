@@ -29,7 +29,7 @@ public class ItemController : MonoBehaviour
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         rect = GetComponent<RectTransform>();
 
@@ -37,6 +37,17 @@ public class ItemController : MonoBehaviour
         {
             tileColliders.Add(childTile);
         }
+    }
+
+    public void Init(RectTransform parent)
+    {
+        rect.SetParent(parent);
+
+        rect.localScale = Vector2.one;
+
+        rect.anchoredPosition3D = Vector3.zero;
+
+        ResetAllTiles();
     }
 
     // Update is called once per frame

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FanBladesData
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemPropPrefab: {fileID: 7351130030380672614, guid: 50a069168b1feaa4e9f0b9d3a54ae288, type: 3}
-  itemUIPrefab: {fileID: 7844746892958508464, guid: 7f1d705e9f423f14c80687eba426f4ef, type: 3}
+  itemUIPrefab: {fileID: 4825727792725077050, guid: 7f1d705e9f423f14c80687eba426f4ef, type: 3}
   itemType: 2
   itemSellValue: 10
   itemEnergyCost: 0.1

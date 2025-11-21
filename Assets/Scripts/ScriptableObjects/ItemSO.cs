@@ -6,7 +6,7 @@ public class ItemSO : ScriptableObject
 {
     public GameObject itemPropPrefab;
 
-    public RectTransform itemUIPrefab;
+    public ItemController itemUIPrefab;
 
     public ItemTypes itemType;
 
