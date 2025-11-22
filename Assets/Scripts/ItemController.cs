@@ -11,7 +11,7 @@ public enum ItemState
 
 public class ItemController : MonoBehaviour
 {
-    List<TileController> tileColliders = new List<TileController>();
+    List<TileController> tileControllers = new List<TileController>();
 
     RectTransform rect;
 
@@ -35,7 +35,7 @@ public class ItemController : MonoBehaviour
 
         foreach(TileController childTile in transform.GetComponentsInChildren<TileController>())
         {
-            tileColliders.Add(childTile);
+            tileControllers.Add(childTile);
         }
     }
 
@@ -61,7 +61,7 @@ public class ItemController : MonoBehaviour
                 FollowMouse();
 
                 //  Have each tile check if it is over a valid space
-                foreach(TileController tile in tileColliders)
+                foreach(TileController tile in tileControllers)
                 {
                     tile.OverTileCheck();
                 }
@@ -98,7 +98,7 @@ public class ItemController : MonoBehaviour
         inventorySO.uiInventoryManager.ActiveItem = null;
 
         //  Check if each tile is over a valid space
-        foreach (TileController tile in tileColliders)
+        foreach (TileController tile in tileControllers)
         {
             if (!tile.IsOverValid())
             {
@@ -131,9 +131,7 @@ public class ItemController : MonoBehaviour
             case ItemState.Placed:
                 rect.SetParent(inventorySO.uiInventoryManager.heldItemsRect);
 
-                MoveToSnapPosition(tileColliders[0].GetSnapToPositionOffset());
-
-                //ResetAllTiles();
+                MoveToSnapPosition(GetActiveTileSnapOffset());
                 break;
         }
 
@@ -142,7 +140,7 @@ public class ItemController : MonoBehaviour
 
     void ResetAllTiles()
     {
-        foreach(TileController tile in tileColliders)
+        foreach(TileController tile in tileControllers)
         {
             tile.Reset();
         }
@@ -158,13 +156,23 @@ public class ItemController : MonoBehaviour
         rect.Rotate(0f, 0f, newRot);
     }
 
-    void MoveToSnapPosition(Vector2 snapOffset)
+    void MoveToSnapPosition(Vector3 snapOffset)
     {
-        Vector3 snapPos = rect.anchoredPosition3D;
-        snapPos.x += snapOffset.x;
-        snapPos.y += snapOffset.y;
-        snapPos.z = 0;
+        Vector3 snapPos = rect.anchoredPosition3D + snapOffset;
 
         SetPosition(snapPos);
+    }
+
+    Vector3 GetActiveTileSnapOffset()
+    {
+        foreach(TileController tile in tileControllers)
+        {
+            if(tile.IsActive())
+            {
+                return tile.GetSnapToPositionOffset();
+            }
+        }
+
+        return Vector3.zero;
     }
 }

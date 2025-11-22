@@ -108,6 +108,7 @@ public class InventoryManager : MonoBehaviour
         {
             TileController spawnedTile = Instantiate(tilePrefab);
 
+
             spawnedTile.Init(storageRect);
 
             tileSize = spawnedTile.GetTileSize();

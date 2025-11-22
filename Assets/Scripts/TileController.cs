@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum TileState
@@ -17,9 +15,6 @@ public class TileController : MonoBehaviour
     Image tileImage;
 
     [SerializeField]
-    bool isActive = true;
-
-    [SerializeField]
     TileState currentState;
 
     public TileState State
@@ -29,9 +24,6 @@ public class TileController : MonoBehaviour
 
     [SerializeField]
     InventorySO inventorySO;
-
-    [SerializeField]
-    int hitTileCount = 0;
 
     //Vector2 snapPosition = Vector2.zero;
     Vector2 snapOffset = Vector2.zero;
@@ -95,23 +87,25 @@ public class TileController : MonoBehaviour
         snapOffset = Vector2.zero;
 
         //  Raycast
-        Vector3 raycastOrigin = transform.position;
-        raycastOrigin.z -= 1f;
-        Physics2D.Raycast(raycastOrigin, transform.forward, ContactFilter2D.noFilter, raycastHits);
+        Physics2D.Raycast(transform.position, transform.forward, ContactFilter2D.noFilter, raycastHits);
 
-        
-        hitTileCount = 0;
+        int validTiles = 0;
         foreach (RaycastHit2D result in raycastHits)
         {
-             ++hitTileCount;
+            if (result.transform.CompareTag(inventorySO.k_STORAGE_TAG))
+            {
+                ++validTiles;
+                Vector2 storageTilePoint = RectTransformUtility.WorldToScreenPoint(inventorySO.uiInventoryManager.Camera, result.transform.position);
 
-             snapOffset = result.transform.position - transform.position;            
+                Vector2 myPoint = RectTransformUtility.WorldToScreenPoint(inventorySO.uiInventoryManager.Camera, transform.position);
+
+                snapOffset = storageTilePoint - myPoint;
+
+                //Debug.Log(snapOffset);
+            }                         
         }
 
-
-        Debug.Log(raycastHits.Count);
-
-        if (hitTileCount == 1)
+        if (validTiles == 1 && raycastHits.Count == 2)
         {
             currentState = TileState.OverValid;
         }
@@ -127,12 +121,27 @@ public class TileController : MonoBehaviour
     {
         currentState = TileState.None;
 
-        boxCollider.size = inventorySO.uiInventoryManager.TileSize;
+        if (inventorySO.uiInventoryManager.TileSize.x == 0)
+        {
+            boxCollider.size = rect.rect.size * 2f;
+        }
+        else
+        {
+            boxCollider.size = inventorySO.uiInventoryManager.TileSize;
+        }
     }
 
-    public Vector2 GetSnapToPositionOffset()
+    public Vector3 GetSnapToPositionOffset()
     {
-        return snapOffset;
+        if(IsActive())
+        {
+
+            return snapOffset * 2f;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
     }
 
     public bool IsOverValid()
@@ -165,5 +174,10 @@ public class TileController : MonoBehaviour
     public void SetTileSize(Vector2 size)
     {
 
+    }
+
+    public bool IsActive()
+    {
+        return tileImage.enabled;
     }
 }

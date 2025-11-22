@@ -27,6 +27,8 @@ public class InventorySO : ScriptableObject
 
     public PropDropper propDropperManager;
 
+    public string k_STORAGE_TAG = "Storage";
+
     public ItemSO GetItemDataByType(ItemTypes itemType)
     {
         foreach (ItemSO item in items)
