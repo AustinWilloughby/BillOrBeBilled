@@ -108,6 +108,7 @@ public class InventoryManager : MonoBehaviour
         {
             TileController spawnedTile = Instantiate(tilePrefab);
 
+            spawnedTile.gameObject.tag = inventorySO.k_STORAGE_TAG;
 
             spawnedTile.Init(storageRect);
 
