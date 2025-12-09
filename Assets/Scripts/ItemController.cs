@@ -43,7 +43,7 @@ public class ItemController : MonoBehaviour
     {
         rect.SetParent(parent);
 
-        rect.localScale = Vector2.one;
+        rect.localScale = Vector3.one;
 
         rect.anchoredPosition3D = new Vector3(0f, 0f, parent.position.z);
 
