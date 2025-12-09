@@ -105,6 +105,8 @@ public class ItemController : MonoBehaviour
             if (!tile.IsOverValid())
             {
                 ChangeStateTo(ItemState.None);
+
+                ResetAllTiles();
                 return;
             }
         }

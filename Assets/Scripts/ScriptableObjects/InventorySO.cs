@@ -29,6 +29,8 @@ public class InventorySO : ScriptableObject
 
     public string k_STORAGE_TAG = "Storage";
 
+    public Color normalColor, validColor, invalidColor;
+
     public ItemSO GetItemDataByType(ItemTypes itemType)
     {
         foreach (ItemSO item in items)

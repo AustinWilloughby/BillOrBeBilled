@@ -29,9 +29,6 @@ public class TileController : MonoBehaviour
     Vector2 snapOffset = Vector2.zero;
     Vector3 snapOffset3d = Vector3.zero;
 
-    [SerializeField]
-    Color normalColor, validColor, invalidColor;
-
     RectTransform rect;
 
     BoxCollider2D boxCollider;
@@ -68,13 +65,13 @@ public class TileController : MonoBehaviour
         switch (currentState)
         {
             case TileState.None:
-                tileImage.color = normalColor;
+                tileImage.color = inventorySO.normalColor;
                 break;
             case TileState.OverValid:
-                tileImage.color = validColor;
+                tileImage.color = inventorySO.validColor;
                 break;
             case TileState.OverInvalid:
-                tileImage.color = invalidColor;
+                tileImage.color = inventorySO.invalidColor;
                 break;
         }
     }

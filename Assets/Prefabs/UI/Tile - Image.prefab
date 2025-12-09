@@ -90,13 +90,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileController
   tileImage: {fileID: 3873987087979465260}
-  isActive: 1
   currentState: 0
   inventorySO: {fileID: 11400000, guid: 1e2513df45fcd4543b15eb8a45f989ce, type: 2}
-  hitTileCount: 0
   normalColor: {r: 0.4575472, g: 0.77708876, b: 1, a: 0.627451}
   validColor: {r: 0, g: 0.56326723, b: 1, a: 0.627451}
   invalidColor: {r: 0.9575472, g: 0.9717074, b: 1, a: 0.627451}
+  tileLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &4381397087429903346
 BoxCollider2D:
   m_ObjectHideFlags: 0

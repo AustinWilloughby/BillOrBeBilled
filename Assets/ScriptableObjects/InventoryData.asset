@@ -28,4 +28,6 @@ MonoBehaviour:
   uiInventoryManager: {fileID: 0}
   propDropperManager: {fileID: 0}
   k_STORAGE_TAG: Storage
-  layerZOffset: 1
+  normalColor: {r: 0.28315237, g: 0.4644265, b: 0.5943396, a: 0.627451}
+  validColor: {r: 0, g: 0.56326723, b: 1, a: 0.627451}
+  invalidColor: {r: 0.9575472, g: 0.9717074, b: 1, a: 0.627451}
