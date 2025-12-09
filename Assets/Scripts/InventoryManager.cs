@@ -27,11 +27,6 @@ public class InventoryManager : MonoBehaviour
         get { return canvasRect; }
     }
 
-
-    [SerializeField]
-    CanvasSO canvasSO;
-
-
     [SerializeField]
     Camera _camera;
     public Camera Camera
@@ -77,12 +72,6 @@ public class InventoryManager : MonoBehaviour
         canvasScaler = _canvas.GetComponent<CanvasScaler>();
         raycaster = _canvas.GetComponent<GraphicRaycaster>();
         canvasRect = _canvas.GetComponent<RectTransform>();
-
-        //canvasSO.canvasRect = canvasRect;
-        canvasSO.raycaster = raycaster;
-        canvasSO.canvasScaler = canvasScaler;
-
-        canvasSO.inventoryManager = this;
 
         inventorySO.uiInventoryManager = this;
 
