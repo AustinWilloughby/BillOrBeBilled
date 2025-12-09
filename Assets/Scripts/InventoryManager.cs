@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour
     {
         get { return raycaster; }
     }
-    
+
     RectTransform canvasRect;
     public RectTransform CanvasRect
     {
@@ -50,7 +50,7 @@ public class InventoryManager : MonoBehaviour
 
     List<ItemController> storedItems = new List<ItemController>();
 
-    bool isActive = true;
+    bool isActive = false;
 
     [SerializeField]
     TileController tilePrefab;
@@ -149,11 +149,14 @@ public class InventoryManager : MonoBehaviour
         //
         for (int i = 0; i < pickedUpRect.childCount; ++i)
         {
-            ItemController missedItem = pickedUpRect.GetChild(i).GetComponent<ItemController>();
+            DropItem(pickedUpRect.GetChild(i));
+        }
 
-            inventorySO.propDropperManager.SpawnItem(missedItem.ItemType);
+        if (activeItem != null)
+        {
+            DropItem(activeItem);
 
-            Destroy(missedItem.gameObject);
+            activeItem = null;
         }
 
 
@@ -205,9 +208,24 @@ public class InventoryManager : MonoBehaviour
 
         _camera.gameObject.SetActive(value);
 
-        if(!isActive)
+        if (!isActive)
         {
             ClearInventory();
         }
+    }
+
+    void DropItem(ItemController item)
+    {
+        if (item == null)
+            return;
+
+        inventorySO.propDropperManager.SpawnItem(item.ItemType);
+
+        Destroy(item.gameObject);
+    }
+
+    void DropItem(Transform itemRect)
+    {
+        DropItem(itemRect.GetComponent<ItemController>());
     }
 }
