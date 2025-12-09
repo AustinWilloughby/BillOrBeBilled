@@ -148,7 +148,7 @@ public class ItemController : MonoBehaviour
 
     void SetPosition(Vector3 newPos)
     {
-        rect.anchoredPosition3D = newPos;// / inventorySO.uiInventoryManager.CanvasRect.localScale;
+        rect.anchoredPosition3D = newPos;
     }
 
     public void AddRotation(float newRot)
@@ -158,9 +158,9 @@ public class ItemController : MonoBehaviour
 
     void MoveToSnapPosition(Vector3 snapOffset)
     {
-        Vector3 snapPos = rect.anchoredPosition3D + snapOffset;
+        transform.position += snapOffset;
 
-        SetPosition(snapPos);
+        //SetPosition(snapPos);
     }
 
     Vector3 GetActiveTileSnapOffset()

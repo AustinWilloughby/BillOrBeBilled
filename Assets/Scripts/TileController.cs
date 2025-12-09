@@ -27,6 +27,7 @@ public class TileController : MonoBehaviour
 
     //Vector2 snapPosition = Vector2.zero;
     Vector2 snapOffset = Vector2.zero;
+    Vector3 snapOffset3d = Vector3.zero;
 
     [SerializeField]
     Color normalColor, validColor, invalidColor;
@@ -95,11 +96,14 @@ public class TileController : MonoBehaviour
             if (result.transform.CompareTag(inventorySO.k_STORAGE_TAG))
             {
                 ++validTiles;
+              
                 Vector2 storageTilePoint = RectTransformUtility.WorldToScreenPoint(inventorySO.uiInventoryManager.Camera, result.transform.position);
 
                 Vector2 myPoint = RectTransformUtility.WorldToScreenPoint(inventorySO.uiInventoryManager.Camera, transform.position);
 
                 snapOffset = storageTilePoint - myPoint;
+
+                snapOffset3d = result.transform.position - transform.position;
 
                 //Debug.Log(snapOffset);
             }                         
@@ -136,7 +140,7 @@ public class TileController : MonoBehaviour
         if(IsActive())
         {
 
-            return snapOffset * 2f;
+            return snapOffset3d;// * 2f;
         }
         else
         {
@@ -154,8 +158,10 @@ public class TileController : MonoBehaviour
         return true;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
+        //  Show Raycasting info
+        /*
         if (rect != null && tileImage.isActiveAndEnabled)
         {
             Gizmos.color = Color.red;
@@ -163,6 +169,14 @@ public class TileController : MonoBehaviour
             Vector3 raycastOrigin = transform.position;
             //raycastOrigin.z -= 1f;
             Gizmos.DrawRay(raycastOrigin, transform.forward);
+        }*/
+
+        //  Show Tile Snapping info
+        if(IsActive())
+        {
+            Gizmos.color = Color.magenta;
+
+            Gizmos.DrawLine(transform.position, transform.position + snapOffset3d);
         }
     }
 
