@@ -104,7 +104,6 @@ public class TileController : MonoBehaviour
                 snapOffset = storageTilePoint - myPoint;
 
                 snapOffset3d = result.transform.position - transform.position;
-                snapOffset3d.z -= inventorySO.layerZOffset;
 
                 //Debug.Log(snapOffset);
             }                         

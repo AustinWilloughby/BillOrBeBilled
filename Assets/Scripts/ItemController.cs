@@ -78,6 +78,8 @@ public class ItemController : MonoBehaviour
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(inventorySO.uiInventoryManager.menuRect, newPos, inventorySO.uiInventoryManager.Camera, out newPos);
 
+        //newPos.z = inventorySO.uiInventoryManager.pickedUpRect.position.z;
+
         SetPosition(newPos);
     }
 
@@ -113,6 +115,8 @@ public class ItemController : MonoBehaviour
 
     void ChangeStateTo(ItemState newState)
     {
+        Vector3 newPos = Vector3.zero;
+
         switch (newState)
         {
             case ItemState.Dragging:
@@ -126,7 +130,7 @@ public class ItemController : MonoBehaviour
 
                 rect.rotation = Quaternion.identity;
 
-                ResetAllTiles();
+                ResetZDepth(rect.anchoredPosition3D);
                 break;
             case ItemState.Placed:
                 rect.SetParent(inventorySO.uiInventoryManager.heldItemsRect);
@@ -134,6 +138,10 @@ public class ItemController : MonoBehaviour
                 MoveToSnapPosition(GetActiveTileSnapOffset());
                 break;
         }
+
+
+
+        ResetZDepth(rect.anchoredPosition3D);
 
         currentState = newState;
     }
@@ -148,6 +156,8 @@ public class ItemController : MonoBehaviour
 
     void SetPosition(Vector3 newPos)
     {
+        newPos.z = rect.parent.transform.localPosition.z;
+
         rect.anchoredPosition3D = newPos;
     }
 
@@ -174,5 +184,12 @@ public class ItemController : MonoBehaviour
         }
 
         return Vector3.zero;
+    }
+
+    void ResetZDepth(Vector3 ancorPos)
+    {
+        ancorPos.z = 0f;
+
+        rect.anchoredPosition3D = ancorPos;
     }
 }
