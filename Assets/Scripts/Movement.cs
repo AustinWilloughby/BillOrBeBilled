@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 using UnityEngine.VFX;
 
 public class Movement : MonoBehaviour
@@ -16,6 +17,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 2f;
     [SerializeField] private float hoverHeight = 0.5f;
     [SerializeField] private LayerMask groundLayer = -1;
+    [SerializeField] private float steepAngle = 45.0f;
+    [SerializeField] private float maxGroundSnapDistance = 0.01f;
+    [SerializeField] private float gravityForce = 9.81f;
+    private float gravityDisplacement = 0.0f;
+    bool grounded = false;
+    float lastGroundedAngle = 0;
 
     [Header("Collision Detection")]
     [SerializeField] private LayerMask wallLayers = -1;
@@ -110,7 +117,7 @@ public class Movement : MonoBehaviour
     {
         Vector3 forward = transform.forward;
 
-        float forwardInput = moveInput.y;
+        float forwardInput = grounded ? moveInput.y : 0;
         float turnInput = moveInput.x;
 
         Vector3 forwardAccel = forward * forwardInput * acceleration * Time.fixedDeltaTime;
@@ -124,8 +131,11 @@ public class Movement : MonoBehaviour
         leftWheelVelocity = forward * Vector3.Dot(leftWheelVelocity, forward);
         rightWheelVelocity = forward * Vector3.Dot(rightWheelVelocity, forward);
 
-        leftWheelVelocity *= (1f - drag * Time.fixedDeltaTime);
-        rightWheelVelocity *= (1f - drag * Time.fixedDeltaTime);
+        if (grounded)
+        {
+            leftWheelVelocity *= (1f - drag * Time.fixedDeltaTime);
+            rightWheelVelocity *= (1f - drag * Time.fixedDeltaTime);
+        }
 
         leftWheelVelocity = Vector3.ClampMagnitude(leftWheelVelocity, maxSpeed);
         rightWheelVelocity = Vector3.ClampMagnitude(rightWheelVelocity, maxSpeed);
@@ -145,7 +155,8 @@ public class Movement : MonoBehaviour
             }
         }
 
-        Energy.Instance.EffectBatteryCharge((leftWheelVelocity.magnitude + rightWheelVelocity.magnitude) * energyCostScaler);
+        Energy.Instance.EffectBatteryCharge((leftWheelVelocity.magnitude 
+            + rightWheelVelocity.magnitude) * energyCostScaler);
     }
 
     private void UpdateRigidbody()
@@ -169,11 +180,18 @@ public class Movement : MonoBehaviour
         Vector3 rightWheelPos = newPosition + right * (axleWidth * 0.5f);
 
         RaycastHit leftHit, rightHit;
-        bool leftGrounded = Physics.Raycast(leftWheelPos + Vector3.up * 1000f, Vector3.down, out leftHit, Mathf.Infinity, groundLayer);
-        bool rightGrounded = Physics.Raycast(rightWheelPos + Vector3.up * 1000f, Vector3.down, out rightHit, Mathf.Infinity, groundLayer);
+        bool leftGrounded = Physics.Raycast(leftWheelPos + Vector3.up * 1000f, 
+            Vector3.down, out leftHit, Mathf.Infinity, groundLayer);
+        bool rightGrounded = Physics.Raycast(rightWheelPos + Vector3.up * 1000f, 
+            Vector3.down, out rightHit, Mathf.Infinity, groundLayer);
+
+        float maxAngle = 0;
 
         if (leftGrounded && rightGrounded)
         {
+            maxAngle = Mathf.Max(maxAngle, Vector3.Angle(Vector3.up, leftHit.normal));
+            maxAngle = Mathf.Max(maxAngle, Vector3.Angle(Vector3.up, rightHit.normal));
+
             Vector3 leftGroundPoint = leftHit.point + Vector3.up * hoverHeight;
             Vector3 rightGroundPoint = rightHit.point + Vector3.up * hoverHeight;
 
@@ -190,7 +208,7 @@ public class Movement : MonoBehaviour
             Quaternion targetRotation = Quaternion.identity;
             smoothedMovementX = Mathf.Lerp(smoothedMovementX, moveInput.x, 0.9f * Time.fixedDeltaTime);
 
-            if (Mathf.Abs(smoothedMovementX) < 0.1f && moveInput.x == 0)
+            if (Mathf.Abs(smoothedMovementX) < 0.1f && moveInput.x == 0 && grounded)
             {
                 targetRotation = Quaternion.LookRotation(rotatedForward, axleUp);
             }
@@ -210,6 +228,7 @@ public class Movement : MonoBehaviour
         else if (leftGrounded || rightGrounded)
         {
             RaycastHit hit = leftGrounded ? leftHit : rightHit;
+            maxAngle = Mathf.Max(maxAngle, Vector3.Angle(Vector3.up, hit.normal));
             newPosition.y = hit.point.y + hoverHeight;
         }
 
@@ -228,9 +247,25 @@ public class Movement : MonoBehaviour
         Quaternion leanRotation = Quaternion.Euler(currentLeanAngle, 0f, 0f);
         finalRotation = finalRotation * leanRotation;
 
+        if(Mathf.Abs(newPosition.y - transform.position.y) > maxGroundSnapDistance 
+            && newPosition.y < transform.position.y && lastGroundedAngle > steepAngle)
+        {
+            newPosition.y = transform.position.y + gravityDisplacement;
+            gravityDisplacement -= gravityForce * Time.fixedDeltaTime;
+            grounded = false;
+        }
+        else
+        {
+            grounded = true;
+            gravityDisplacement = 0;
+            lastGroundedAngle = maxAngle;
+        }
 
         rb.MovePosition(newPosition);
-        rb.MoveRotation(finalRotation);
+        if (grounded)
+        {
+            rb.MoveRotation(finalRotation);
+        }
     }
 
     private void UpdateVisualWheels()
@@ -275,31 +310,5 @@ public class Movement : MonoBehaviour
             Vector3 toTarget = other.transform.position - transform.position;
             stopDirection = Vector3.Dot(toTarget, transform.forward);
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        //if (!Application.isPlaying) return;
-        //
-        //Vector3 right = transform.right;
-        //Vector3 center = transform.position;
-        //
-        //Vector3 leftWheel = center - right * (axleWidth * 0.5f);
-        //Vector3 rightWheel = center + right * (axleWidth * 0.5f);
-        //
-        //Gizmos.color = Color.yellow;
-        //Gizmos.DrawLine(leftWheel, rightWheel);
-        //
-        //Gizmos.color = Color.green;
-        //Gizmos.DrawRay(leftWheel, leftWheelVelocity * 0.5f);
-        //Gizmos.DrawRay(rightWheel, rightWheelVelocity * 0.5f);
-        //
-        //Gizmos.color = Color.blue;
-        //Gizmos.DrawWireSphere(leftWheel, 0.2f);
-        //Gizmos.DrawWireSphere(rightWheel, 0.2f);
-        //
-        //Gizmos.color = Color.red;
-        //Vector3 rayOrigin = center + Vector3.up * groundCheckDistance;
-        //Gizmos.DrawLine(rayOrigin, rayOrigin + Vector3.down * groundCheckDistance * 2f);
     }
 }
