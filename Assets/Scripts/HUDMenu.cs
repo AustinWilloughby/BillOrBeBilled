@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDMenu : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class HUDMenu : MonoBehaviour
 
     [SerializeField]
     Text moneyLabel;
+
+    //[SerializeField]
+
 
     const string k_MONEY_STR = "Money: ${0}";
 
