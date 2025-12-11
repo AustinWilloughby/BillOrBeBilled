@@ -597,6 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HUDMenu
   EnergySlider: {fileID: 6256719671450172001}
   moneyLabel: {fileID: 0}
+  moneyText: {fileID: 827621883584139746}
 --- !u!1 &6509017193940142872
 GameObject:
   m_ObjectHideFlags: 0

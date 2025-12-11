@@ -10,8 +10,8 @@ public class HUDMenu : MonoBehaviour
     [SerializeField]
     Text moneyLabel;
 
-    //[SerializeField]
-
+    [SerializeField]
+    TMP_Text moneyText;
 
     const string k_MONEY_STR = "Money: ${0}";
 
@@ -28,6 +28,14 @@ public class HUDMenu : MonoBehaviour
 
         EnergySlider.value = Energy.Instance.CurrentBattery;
 
-        moneyLabel.text = string.Format(k_MONEY_STR, Energy.Instance.Money);
+        if (moneyLabel != null)
+        {
+            moneyLabel.text = string.Format(k_MONEY_STR, Energy.Instance.Money);
+        }
+
+        if (moneyText != null)
+        {
+            moneyText.text = string.Format(k_MONEY_STR, Energy.Instance.Money);
+        }
     }
 }
