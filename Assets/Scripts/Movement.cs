@@ -1,8 +1,6 @@
-﻿using System;
+﻿using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using UnityEngine.VFX;
 
 public class Movement : MonoBehaviour
 {
@@ -12,6 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float turnAcceleration = 8f;
     [SerializeField] private float drag = 2f;
     [SerializeField] private float axleWidth = 1f;
+    [SerializeField, Range(0, 90)] private int maxSlopeAngleDegrees = 50;
 
     [Header("Ground Detection")]
     [SerializeField] private float groundCheckDistance = 2f;
@@ -215,6 +214,18 @@ public class Movement : MonoBehaviour
             else
             { 
                 targetRotation = Quaternion.LookRotation(axleForward, axleUp);
+            }
+
+            float leftNormAngle = Vector3.Angle(leftHit.normal, Vector3.up);
+            float rightNormAngle = Vector3.Angle(rightHit.normal, Vector3.up);
+            Vector3 relevantNormal = leftNormAngle > rightNormAngle ? leftHit.normal : rightHit.normal;
+            float relevantAngle = Mathf.Max(leftNormAngle, rightNormAngle);
+
+            Debug.Log(relevantAngle + " " + Vector3.Dot(relevantNormal, transform.forward));
+            if(relevantAngle > maxSlopeAngleDegrees && 
+                Vector3.Dot(relevantNormal, transform.forward) < 0)
+            {
+                targetPosition = transform.position;
             }
 
             currentSurfaceRotation = Quaternion.Slerp(
